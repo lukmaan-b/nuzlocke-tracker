@@ -23,12 +23,10 @@ jobs:
       - name: Create saves directory
         run: mkdir -p saves
 
-      - name: Write .env from secrets
-        run: |
-          echo "DROPBOX_TOKEN=${{ secrets.DROPBOX_TOKEN }}" > .env
-          echo "DROPBOX_SAVE_FOLDER=${{ secrets.DROPBOX_SAVE_FOLDER }}" >> .env
-
       - name: Poll Dropbox & parse saves
+        env:
+          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
+          DROPBOX_SAVE_FOLDER: ${{ secrets.DROPBOX_SAVE_FOLDER }}
         run: python poll_dropbox.py
 
       - name: Commit updated data.json

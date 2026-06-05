@@ -16,16 +16,16 @@ from datetime import datetime, timezone
 # ── load .env ──────────────────────────────────────────────────────────────────
 def load_env():
     env_path = pathlib.Path(__file__).parent / ".env"
-    if not env_path.exists():
-        sys.exit(
-            "ERROR: .env file not found.\n"
-            "Copy .env.example to .env and fill in your DROPBOX_TOKEN and DROPBOX_SAVE_FOLDER."
-        )
-    for line in env_path.read_text(encoding="utf-8-sig").splitlines():
-        line = line.strip()
-        if line and not line.startswith("#") and "=" in line:
-            k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip())
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8-sig").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+    # Strip BOM/whitespace from values however they arrived (file or CI env)
+    for key in ("DROPBOX_TOKEN", "DROPBOX_SAVE_FOLDER"):
+        if key in os.environ:
+            os.environ[key] = os.environ[key].strip().lstrip("﻿")
 
 load_env()
 
