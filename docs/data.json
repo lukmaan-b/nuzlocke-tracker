@@ -1,6 +1,133 @@
 {
   "players": [
     {
+      "id": "Pokemon - FireRed Version (USA) (patched)",
+      "trainer": "AssBoi",
+      "gender": "M",
+      "trainerId": 59172,
+      "playTime": {
+        "h": 2,
+        "m": 15,
+        "s": 45
+      },
+      "badges": 1,
+      "badgeList": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "location": {
+        "area": "Route 4",
+        "x": 48.0,
+        "y": 30.0,
+        "known": true,
+        "mapGroup": 3,
+        "mapNum": 22
+      },
+      "party": [
+        {
+          "species": "Nidoran-M",
+          "dex": 32,
+          "nickname": "NIDORAN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 804,
+          "level": 11,
+          "hp": 33,
+          "maxHp": 33
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2780,
+          "level": 16,
+          "hp": 40,
+          "maxHp": 40
+        },
+        {
+          "species": "Mankey",
+          "dex": 56,
+          "nickname": "MANKEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2526,
+          "level": 13,
+          "hp": 34,
+          "maxHp": 34
+        },
+        {
+          "species": "Magikarp",
+          "dex": 129,
+          "nickname": "MAGIKARP",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 156,
+          "level": 5,
+          "hp": 17,
+          "maxHp": 17
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2188,
+          "level": 12,
+          "hp": 31,
+          "maxHp": 31
+        },
+        {
+          "species": "Bulbasaur",
+          "dex": 1,
+          "nickname": "BULBASAUR",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2672,
+          "level": 16,
+          "hp": 42,
+          "maxHp": 42
+        }
+      ],
+      "boxes": [
+        {
+          "species": "Zubat",
+          "dex": 41,
+          "nickname": "ZUBAT",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 343,
+          "box": 1
+        },
+        {
+          "species": "Kakuna",
+          "dex": 14,
+          "nickname": "KAKUNA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 474,
+          "box": 1
+        }
+      ],
+      "boxCount": 2
+    },
+    {
       "id": "lukmaan",
       "trainer": "Red",
       "gender": "M",
@@ -81,123 +208,6 @@
       ],
       "boxes": [],
       "boxCount": 0
-    },
-    {
-      "id": "patched",
-      "trainer": "AssBoi",
-      "gender": "M",
-      "trainerId": 59172,
-      "playTime": {
-        "h": 2,
-        "m": 3,
-        "s": 15
-      },
-      "badges": 1,
-      "badgeList": [
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      "location": {
-        "area": "Mt. Moon",
-        "x": 40.0,
-        "y": 29.0,
-        "known": true,
-        "mapGroup": 1,
-        "mapNum": 1
-      },
-      "party": [
-        {
-          "species": "Bulbasaur",
-          "dex": 1,
-          "nickname": "BULBASAUR",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2672,
-          "level": 16,
-          "hp": 40,
-          "maxHp": 42
-        },
-        {
-          "species": "Pidgey",
-          "dex": 16,
-          "nickname": "PIDGEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2725,
-          "level": 16,
-          "hp": 40,
-          "maxHp": 40
-        },
-        {
-          "species": "Mankey",
-          "dex": 56,
-          "nickname": "MANKEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2526,
-          "level": 13,
-          "hp": 34,
-          "maxHp": 34
-        },
-        {
-          "species": "Kakuna",
-          "dex": 14,
-          "nickname": "KAKUNA",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 474,
-          "level": 7,
-          "hp": 24,
-          "maxHp": 24
-        },
-        {
-          "species": "Rattata",
-          "dex": 19,
-          "nickname": "RATTATA",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2083,
-          "level": 12,
-          "hp": 31,
-          "maxHp": 31
-        },
-        {
-          "species": "Nidoran-M",
-          "dex": 32,
-          "nickname": "NIDORAN",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 236,
-          "level": 7,
-          "hp": 25,
-          "maxHp": 25
-        }
-      ],
-      "boxes": [
-        {
-          "species": "Zubat",
-          "dex": 41,
-          "nickname": "ZUBAT",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 343,
-          "box": 1
-        }
-      ],
-      "boxCount": 1
     }
   ]
 }
