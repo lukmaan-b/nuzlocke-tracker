@@ -21,7 +21,7 @@ def load_env():
             "ERROR: .env file not found.\n"
             "Copy .env.example to .env and fill in your DROPBOX_TOKEN and DROPBOX_SAVE_FOLDER."
         )
-    for line in env_path.read_text().splitlines():
+    for line in env_path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if line and not line.startswith("#") and "=" in line:
             k, v = line.split("=", 1)
