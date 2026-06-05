@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanto Nuzlocke Tracker</title>
+  <link rel="stylesheet" href="style.css?v=6" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Kanto Nuzlocke <span>Tracker</span></h1>
+    <div class="legend" id="legend"></div>
+  </header>
+
+  <main class="stage">
+    <div class="map-wrap" id="mapWrap">
+      <img src="assets/townmap.png?v=2" alt="Kanto Town Map" id="mapImg" />
+      <div class="markers" id="markers"></div>
+    </div>
+  </main>
+
+  <!-- Trainer detail panel -->
+  <aside class="panel" id="panel" aria-hidden="true">
+    <button class="panel-close" id="panelClose" title="Close">&times;</button>
+    <div class="panel-body" id="panelBody"></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

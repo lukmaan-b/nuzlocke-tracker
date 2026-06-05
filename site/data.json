@@ -1,0 +1,203 @@
+{
+  "players": [
+    {
+      "id": "lukmaan",
+      "trainer": "Red",
+      "gender": "M",
+      "trainerId": 14371,
+      "playTime": {
+        "h": 1,
+        "m": 1,
+        "s": 52
+      },
+      "badges": 0,
+      "badgeList": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "location": {
+        "area": "Route 22",
+        "x": 12.0,
+        "y": 72.0,
+        "known": true,
+        "mapGroup": 3,
+        "mapNum": 41
+      },
+      "party": [
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 596,
+          "level": 10,
+          "hp": 30,
+          "maxHp": 30
+        },
+        {
+          "species": "Squirtle",
+          "dex": 7,
+          "nickname": "SQUIRTLE",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 910,
+          "level": 11,
+          "hp": 32,
+          "maxHp": 32
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 443,
+          "level": 7,
+          "hp": 22,
+          "maxHp": 22
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 27,
+          "level": 3,
+          "hp": 14,
+          "maxHp": 14
+        }
+      ],
+      "boxes": [],
+      "boxCount": 0
+    },
+    {
+      "id": "patched",
+      "trainer": "AssBoi",
+      "gender": "M",
+      "trainerId": 59172,
+      "playTime": {
+        "h": 2,
+        "m": 3,
+        "s": 15
+      },
+      "badges": 1,
+      "badgeList": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "location": {
+        "area": "Mt. Moon",
+        "x": 40.0,
+        "y": 29.0,
+        "known": true,
+        "mapGroup": 1,
+        "mapNum": 1
+      },
+      "party": [
+        {
+          "species": "Bulbasaur",
+          "dex": 1,
+          "nickname": "BULBASAUR",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2672,
+          "level": 16,
+          "hp": 40,
+          "maxHp": 42
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2725,
+          "level": 16,
+          "hp": 40,
+          "maxHp": 40
+        },
+        {
+          "species": "Mankey",
+          "dex": 56,
+          "nickname": "MANKEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2526,
+          "level": 13,
+          "hp": 34,
+          "maxHp": 34
+        },
+        {
+          "species": "Kakuna",
+          "dex": 14,
+          "nickname": "KAKUNA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 474,
+          "level": 7,
+          "hp": 24,
+          "maxHp": 24
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2083,
+          "level": 12,
+          "hp": 31,
+          "maxHp": 31
+        },
+        {
+          "species": "Nidoran-M",
+          "dex": 32,
+          "nickname": "NIDORAN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 236,
+          "level": 7,
+          "hp": 25,
+          "maxHp": 25
+        }
+      ],
+      "boxes": [
+        {
+          "species": "Zubat",
+          "dex": 41,
+          "nickname": "ZUBAT",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 343,
+          "box": 1
+        }
+      ],
+      "boxCount": 1
+    }
+  ]
+}
