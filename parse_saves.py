@@ -1,11 +1,11 @@
 """
-Parse a folder of Pokemon FireRed/LeafGreen .sav files into site/data.json.
+Parse a folder of Pokemon FireRed/LeafGreen .sav files into docs/data.json.
 
 Usage:
     python parse_saves.py [saves_dir] [output_json]
 Defaults:
     saves_dir   = ./saves
-    output_json = ./site/data.json
+    output_json = ./docs/data.json
 """
 import sys, os, json, struct, glob
 import gen3data
@@ -182,7 +182,7 @@ def parse_save(path):
 
 def main():
     saves_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "saves")
-    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "site", "data.json")
+    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "docs", "data.json")
     files = sorted(
         glob.glob(os.path.join(saves_dir, "*.sav")) +
         glob.glob(os.path.join(saves_dir, "*.srm"))
