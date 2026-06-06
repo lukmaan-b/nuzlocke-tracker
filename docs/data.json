@@ -6,9 +6,9 @@
       "gender": "M",
       "trainerId": 59172,
       "playTime": {
-        "h": 2,
-        "m": 15,
-        "s": 45
+        "h": 3,
+        "m": 36,
+        "s": 21
       },
       "badges": 1,
       "badgeList": [
@@ -22,12 +22,12 @@
         false
       ],
       "location": {
-        "area": "Route 4",
-        "x": 48.0,
-        "y": 30.0,
+        "area": "Cerulean City",
+        "x": 65.0,
+        "y": 29.0,
         "known": true,
-        "mapGroup": 3,
-        "mapNum": 22
+        "mapGroup": 7,
+        "mapNum": 3
       },
       "party": [
         {
@@ -37,46 +37,10 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 804,
-          "level": 11,
-          "hp": 33,
-          "maxHp": 33
-        },
-        {
-          "species": "Pidgey",
-          "dex": 16,
-          "nickname": "PIDGEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2780,
-          "level": 16,
-          "hp": 40,
-          "maxHp": 40
-        },
-        {
-          "species": "Mankey",
-          "dex": 56,
-          "nickname": "MANKEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2526,
-          "level": 13,
-          "hp": 34,
-          "maxHp": 34
-        },
-        {
-          "species": "Magikarp",
-          "dex": 129,
-          "nickname": "MAGIKARP",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 156,
-          "level": 5,
-          "hp": 17,
-          "maxHp": 17
+          "exp": 3770,
+          "level": 17,
+          "hp": 46,
+          "maxHp": 46
         },
         {
           "species": "Rattata",
@@ -85,10 +49,46 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 2188,
+          "exp": 4240,
+          "level": 16,
+          "hp": 38,
+          "maxHp": 38
+        },
+        {
+          "species": "Mankey",
+          "dex": 56,
+          "nickname": "MANKEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 3936,
+          "level": 15,
+          "hp": 38,
+          "maxHp": 38
+        },
+        {
+          "species": "Magikarp",
+          "dex": 129,
+          "nickname": "MAGIKARP",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2438,
           "level": 12,
-          "hp": 31,
-          "maxHp": 31
+          "hp": 28,
+          "maxHp": 28
+        },
+        {
+          "species": "Pidgeotto",
+          "dex": 17,
+          "nickname": "PIDGEOTTO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 4477,
+          "level": 18,
+          "hp": 52,
+          "maxHp": 52
         },
         {
           "species": "Bulbasaur",
@@ -97,10 +97,10 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 2672,
-          "level": 16,
-          "hp": 42,
-          "maxHp": 42
+          "exp": 4721,
+          "level": 19,
+          "hp": 48,
+          "maxHp": 48
         }
       ],
       "boxes": [
@@ -133,13 +133,13 @@
       "gender": "M",
       "trainerId": 14371,
       "playTime": {
-        "h": 1,
-        "m": 1,
-        "s": 52
+        "h": 2,
+        "m": 40,
+        "s": 39
       },
-      "badges": 0,
+      "badges": 1,
       "badgeList": [
-        false,
+        true,
         false,
         false,
         false,
@@ -149,37 +149,37 @@
         false
       ],
       "location": {
-        "area": "Route 22",
-        "x": 12.0,
-        "y": 72.0,
+        "area": "Cerulean City",
+        "x": 65.0,
+        "y": 29.0,
         "known": true,
-        "mapGroup": 3,
-        "mapNum": 41
+        "mapGroup": 7,
+        "mapNum": 3
       },
       "party": [
         {
-          "species": "Pidgey",
-          "dex": 16,
-          "nickname": "PIDGEY",
+          "species": "Metapod",
+          "dex": 11,
+          "nickname": "METAPOD",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 596,
-          "level": 10,
+          "exp": 779,
+          "level": 9,
           "hp": 30,
           "maxHp": 30
         },
         {
-          "species": "Squirtle",
-          "dex": 7,
-          "nickname": "SQUIRTLE",
+          "species": "Jigglypuff",
+          "dex": 39,
+          "nickname": "JIGGLYPUFF",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 910,
-          "level": 11,
-          "hp": 32,
-          "maxHp": 32
+          "exp": 1666,
+          "level": 12,
+          "hp": 52,
+          "maxHp": 52
         },
         {
           "species": "Rattata",
@@ -188,10 +188,10 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 443,
-          "level": 7,
-          "hp": 22,
-          "maxHp": 22
+          "exp": 2013,
+          "level": 12,
+          "hp": 31,
+          "maxHp": 31
         },
         {
           "species": "Rattata",
@@ -204,10 +204,172 @@
           "level": 3,
           "hp": 14,
           "maxHp": 14
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2868,
+          "level": 16,
+          "hp": 42,
+          "maxHp": 42
+        },
+        {
+          "species": "Wartortle",
+          "dex": 8,
+          "nickname": "WARTORTLE",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 4325,
+          "level": 18,
+          "hp": 51,
+          "maxHp": 51
         }
       ],
-      "boxes": [],
-      "boxCount": 0
+      "boxes": [
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 57,
+          "box": 1
+        },
+        {
+          "species": "Zubat",
+          "dex": 41,
+          "nickname": "ZUBAT",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 343,
+          "box": 1
+        }
+      ],
+      "boxCount": 2
+    },
+    {
+      "id": "wes-fire-red",
+      "trainer": "WES",
+      "gender": "M",
+      "trainerId": 38869,
+      "playTime": {
+        "h": 1,
+        "m": 32,
+        "s": 23
+      },
+      "badges": 1,
+      "badgeList": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "location": {
+        "area": "Cerulean City",
+        "x": 65.0,
+        "y": 29.0,
+        "known": true,
+        "mapGroup": 3,
+        "mapNum": 3
+      },
+      "party": [
+        {
+          "species": "Nidorino",
+          "dex": 33,
+          "nickname": "NIDORINO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 3206,
+          "level": 17,
+          "hp": 52,
+          "maxHp": 52
+        },
+        {
+          "species": "Charmeleon",
+          "dex": 5,
+          "nickname": "CHARGRILL",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 8268,
+          "level": 22,
+          "hp": 58,
+          "maxHp": 58
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 8,
+          "level": 2,
+          "hp": 13,
+          "maxHp": 13
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "Rattatata",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 27,
+          "level": 3,
+          "hp": 15,
+          "maxHp": 15
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIG",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 57,
+          "level": 3,
+          "hp": 16,
+          "maxHp": 16
+        },
+        {
+          "species": "Zubat",
+          "dex": 41,
+          "nickname": "ZUBAT",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 512,
+          "level": 8,
+          "hp": 24,
+          "maxHp": 24
+        }
+      ],
+      "boxes": [
+        {
+          "species": "Ekans",
+          "dex": 23,
+          "nickname": "EKANS",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 1000,
+          "box": 1
+        }
+      ],
+      "boxCount": 1
     }
   ]
 }
