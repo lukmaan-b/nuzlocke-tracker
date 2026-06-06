@@ -2,7 +2,7 @@ name: Sync saves & deploy
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # daily at 08:00 UTC
+    - cron: '0 */6 * * *'  # every 6 hours
   workflow_dispatch:        # allow manual trigger from GitHub UI
 
 jobs:
@@ -25,7 +25,9 @@ jobs:
 
       - name: Poll Dropbox & parse saves
         env:
-          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
           DROPBOX_SAVE_FOLDER: ${{ secrets.DROPBOX_SAVE_FOLDER }}
         run: python poll_dropbox.py
 

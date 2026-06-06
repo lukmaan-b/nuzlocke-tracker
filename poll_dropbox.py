@@ -1,16 +1,16 @@
 """
 Download .sav files from a Dropbox folder, then re-run parse_saves.py.
 
-Configuration: create a .env file next to this script:
-    DROPBOX_TOKEN=sl.u.XXXX...
-    DROPBOX_SAVE_FOLDER=/nuzlocke
+Configuration (.env):
+    DROPBOX_APP_KEY=xxx
+    DROPBOX_APP_SECRET=xxx
+    DROPBOX_REFRESH_TOKEN=xxx
+    DROPBOX_SAVE_FOLDER=/pokemon-fire-red
 
 Run manually:
     python poll_dropbox.py
-
-Or schedule daily with Windows Task Scheduler (see README).
 """
-import os, sys, json, urllib.request, urllib.error, subprocess, pathlib
+import os, sys, json, urllib.request, urllib.parse, urllib.error, subprocess, pathlib
 from datetime import datetime, timezone
 
 # ── load .env ──────────────────────────────────────────────────────────────────
@@ -22,20 +22,37 @@ def load_env():
             if line and not line.startswith("#") and "=" in line:
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip())
-    # Strip BOM/whitespace from values however they arrived (file or CI env)
-    for key in ("DROPBOX_TOKEN", "DROPBOX_SAVE_FOLDER"):
+    for key in ("DROPBOX_APP_KEY", "DROPBOX_APP_SECRET",
+                "DROPBOX_REFRESH_TOKEN", "DROPBOX_SAVE_FOLDER"):
         if key in os.environ:
             os.environ[key] = os.environ[key].strip().lstrip("﻿")
 
 load_env()
 
-TOKEN  = os.environ.get("DROPBOX_TOKEN", "").strip()
-FOLDER = os.environ.get("DROPBOX_SAVE_FOLDER", "/nuzlocke").strip()
-SAVES_DIR = pathlib.Path(__file__).parent / "saves"
+APP_KEY       = os.environ.get("DROPBOX_APP_KEY", "").strip()
+APP_SECRET    = os.environ.get("DROPBOX_APP_SECRET", "").strip()
+REFRESH_TOKEN = os.environ.get("DROPBOX_REFRESH_TOKEN", "").strip()
+FOLDER        = os.environ.get("DROPBOX_SAVE_FOLDER", "/nuzlocke").strip()
+SAVES_DIR     = pathlib.Path(__file__).parent / "saves"
 SAVES_DIR.mkdir(exist_ok=True)
 
-if not TOKEN:
-    sys.exit("ERROR: DROPBOX_TOKEN not set in .env")
+if not (APP_KEY and APP_SECRET and REFRESH_TOKEN):
+    sys.exit("ERROR: DROPBOX_APP_KEY, DROPBOX_APP_SECRET and DROPBOX_REFRESH_TOKEN must be set.\n"
+             "Run get_refresh_token.py first.")
+
+# ── get a fresh short-lived access token from the refresh token ────────────────
+def get_access_token():
+    data = urllib.parse.urlencode({
+        "grant_type":    "refresh_token",
+        "refresh_token": REFRESH_TOKEN,
+        "client_id":     APP_KEY,
+        "client_secret": APP_SECRET,
+    }).encode()
+    req = urllib.request.Request("https://api.dropbox.com/oauth2/token", data=data)
+    with urllib.request.urlopen(req) as r:
+        return json.loads(r.read())["access_token"]
+
+TOKEN = get_access_token()
 
 # ── Dropbox API helpers ────────────────────────────────────────────────────────
 def dbx_post(endpoint, body):
@@ -53,12 +70,11 @@ def dbx_post(endpoint, body):
 
 def dbx_download(dropbox_path, dest_path):
     url = "https://content.dropboxapi.com/2/files/download"
-    arg = json.dumps({"path": dropbox_path})
     req = urllib.request.Request(
         url,
         headers={
             "Authorization": f"Bearer {TOKEN}",
-            "Dropbox-API-Arg": arg,
+            "Dropbox-API-Arg": json.dumps({"path": dropbox_path}),
         },
     )
     with urllib.request.urlopen(req) as r:
