@@ -1,218 +1,301 @@
-// Kanto Nuzlocke Tracker — loads data.json and renders the map + detail panel.
+// Kanto Nuzlocke Tracker — Pokémon FireRed/LeafGreen design system
 
 const BADGE_NAMES = [
-  "Boulder", "Cascade", "Thunder", "Rainbow",
-  "Soul", "Marsh", "Volcano", "Earth",
+  "Boulder","Cascade","Thunder","Rainbow",
+  "Soul","Marsh","Volcano","Earth",
 ];
-const COLORS = ["#3b6cff","#ff5d5d","#5bd06a","#c86bff","#ff9f1c","#1fd1c4","#ff6fb5","#9aa7ff"];
 
-// Pokemon sprite by National Dex number (PokeAPI sprite CDN).
+const TRAINER_COLORS = [
+  "#3060c0","#c03028","#28a040","#9050c8",
+  "#e87820","#18a8a0","#d050a0","#a09028",
+];
+
 const spriteUrl = (dex) =>
   dex ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dex}.png` : "";
 
-const $ = (sel) => document.querySelector(sel);
-const el = (tag, cls, html) => {
-  const e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (html != null) e.innerHTML = html;
-  return e;
-};
+const $ = (s) => document.querySelector(s);
+const el = (tag, cls) => { const e = document.createElement(tag); if (cls) e.className = cls; return e; };
+const txt = (t) => document.createTextNode(t);
 
-const initial = (name) => (name || "?").trim().charAt(0).toUpperCase() || "?";
-
-// Did the player give this Pokemon a real nickname (vs. the default ALL-CAPS species name)?
 const hasCustomNick = (mon) =>
   mon.nickname && mon.nickname.toLowerCase() !== mon.species.toLowerCase();
 
-// A face element. Priority:
-//   1. sprite of the lead (first) party Pokémon
-//   2. a player photo at faces/<id>.png
-//   3. a colored circle with the trainer's initial
-function faceStyle(player, color) {
-  const div = el("div", "face");
-  div.style.backgroundColor = color;
-
-  const lead = player.party && player.party[0];
-  if (lead && lead.dex) {
-    div.classList.add("face-mon");
-    div.style.backgroundColor = "";  // let CSS decide (transparent on map)
-    div.style.backgroundImage = `url(${spriteUrl(lead.dex)})`;
-    div.title = hasCustomNick(lead)
-      ? `${lead.nickname} (${lead.species})` : lead.species;
-    return div;
+// ── face helper (lead sprite or initial) ─────────────────────────────────────
+function makeFace(player, extraClass = "") {
+  const lead = player.party?.[0];
+  if (lead?.dex) {
+    const d = el("div", `face${extraClass ? " " + extraClass : ""}`);
+    d.style.backgroundImage = `url(${spriteUrl(lead.dex)})`;
+    d.title = hasCustomNick(lead) ? `${lead.nickname} (${lead.species})` : lead.species;
+    return d;
   }
-
-  div.textContent = initial(player.trainer);
+  const d = el("div", `face face-init${extraClass ? " " + extraClass : ""}`);
+  d.style.backgroundColor = player._color;
+  d.textContent = player.trainer.charAt(0).toUpperCase();
+  // try custom photo
   const img = new Image();
-  img.onload = () => {
-    div.style.backgroundImage = `url(faces/${player.id}.png)`;
-    div.style.backgroundSize = "cover";
-    div.textContent = "";
-  };
+  img.onload = () => { d.style.backgroundImage = `url(faces/${player.id}.png)`; d.textContent = ""; };
   img.src = `faces/${player.id}.png`;
-  return div;
+  return d;
 }
 
-let DATA = { players: [] };
+// ── HP bar ────────────────────────────────────────────────────────────────────
+function makeHpBar(hp, maxHp) {
+  const pct = maxHp ? Math.max(0, Math.min(100, (hp / maxHp) * 100)) : 0;
+  const cls = pct > 50 ? "hp-full" : pct > 20 ? "hp-mid" : "hp-low";
+  const row = el("div", "hp-row");
 
-async function init() {
-  try {
-    const res = await fetch("data.json", { cache: "no-store" });
-    DATA = await res.json();
-  } catch (e) {
-    $("#markers").innerHTML =
-      `<div style="position:absolute;inset:0;display:grid;place-items:center;color:#fff">
-         Could not load data.json — run <code>python parse_saves.py</code> first.
-       </div>`;
-    return;
+  const lbl = el("span", "hp-label"); lbl.textContent = "HP";
+  const track = el("div", "hp-track");
+  const fill = el("div", `hp-fill ${cls}`);
+  fill.style.width = pct + "%";
+  track.append(fill);
+
+  const nums = el("div", "hp-nums");
+  nums.textContent = `${hp}/${maxHp}`;
+
+  row.append(lbl, track);
+  const wrap = el("div"); wrap.append(row, nums);
+  return wrap;
+}
+
+// ── Pokemon card (party) ──────────────────────────────────────────────────────
+function monCard(mon) {
+  const card = el("div", `mon-card${mon.dead ? " mon-dead" : ""}`);
+
+  const img = el("img");
+  img.src = spriteUrl(mon.dex);
+  img.alt = mon.species;
+  img.onerror = () => { img.style.visibility = "hidden"; };
+  card.append(img);
+
+  const info = el("div", "mon-info");
+
+  // nickname / species
+  const nameEl = el("div", "mon-name");
+  nameEl.textContent = hasCustomNick(mon) ? mon.nickname : mon.species;
+  if (mon.shiny) {
+    const star = el("span", "shiny-star"); star.textContent = " ★";
+    nameEl.append(star);
   }
-  DATA.players.forEach((p, i) => (p._color = COLORS[i % COLORS.length]));
-  renderLegend();
-  renderMarkers();
+  info.append(nameEl);
+
+  if (hasCustomNick(mon)) {
+    const nick = el("div", "mon-nick"); nick.textContent = mon.species;
+    info.append(nick);
+  }
+
+  if (mon.level != null) {
+    const lvl = el("div", "mon-lvl"); lvl.textContent = `Lv. ${mon.level}`;
+    info.append(lvl);
+  }
+
+  if (mon.hp != null && mon.maxHp != null) {
+    info.append(makeHpBar(mon.hp, mon.maxHp));
+  }
+
+  card.append(info);
+  return card;
 }
 
-function renderLegend() {
-  const legend = $("#legend");
-  legend.innerHTML = "";
-  DATA.players.forEach((p) => {
-    const chip = el("div", "chip");
-    chip.append(Object.assign(el("span", "dot"), { style: `background:${p._color}` }));
-    chip.append(document.createTextNode(`${p.trainer} · ${p.location.area}`));
-    chip.onclick = () => openPanel(p);
-    legend.append(chip);
+// ── Pokemon box tile ──────────────────────────────────────────────────────────
+function boxTile(mon) {
+  const tile = el("div", `box-mon${mon.dead ? " mon-dead" : ""}`);
+
+  const img = el("img");
+  img.src = spriteUrl(mon.dex);
+  img.alt = mon.species;
+  img.onerror = () => { img.style.visibility = "hidden"; };
+  tile.append(img);
+
+  const name = el("div", "bm-name");
+  name.textContent = hasCustomNick(mon) ? mon.nickname : mon.species;
+  if (mon.shiny) {
+    const star = el("span", "shiny-star"); star.textContent = "★";
+    name.append(star);
+  }
+  tile.append(name);
+
+  const boxLbl = el("div", "bm-box");
+  boxLbl.textContent = `BOX ${mon.box}`;
+  tile.append(boxLbl);
+
+  return tile;
+}
+
+// ── Detail panel ──────────────────────────────────────────────────────────────
+function openPanel(player) {
+  const body = $(".summary-body");
+  body.innerHTML = "";
+
+  // -- HEADER --
+  const hdr = el("div", "sum-header");
+  const spr = makeFace(player, "trainer-sprite");
+  hdr.append(spr);
+  const info = el("div", "trainer-info");
+  const nameEl = el("div", "trainer-name");
+  nameEl.textContent = player.trainer;
+  const sub = el("div", "trainer-sub");
+  const pt = player.playTime;
+  sub.innerHTML =
+    `${player.gender === "F" ? "♀" : "♂"}  ID: ${player.trainerId}<br>` +
+    `TIME: ${pt.h}h ${String(pt.m).padStart(2,"0")}m ${String(pt.s).padStart(2,"0")}s<br>` +
+    `LOCATION: ${player.location.area}`;
+  info.append(nameEl, sub);
+  hdr.append(info);
+  body.append(hdr);
+
+  // -- TRAINER INFO --
+  const infoSec = el("div", "sum-section");
+  const infoTitle = el("div", "sum-section-title"); infoTitle.textContent = "TRAINER";
+  const infoBody = el("div", "sum-section-body");
+  const rows = [
+    ["BADGES", `${player.badges} / 8`],
+    ["LOCATION", player.location.area],
+    ["PLAY TIME", `${pt.h}H ${String(pt.m).padStart(2,"0")}M`],
+  ];
+  rows.forEach(([k, v]) => {
+    const row = el("div", "kv");
+    const kEl = el("span", "k"); kEl.textContent = k;
+    const vEl = el("span", "v"); vEl.textContent = v;
+    row.append(kEl, vEl);
+    infoBody.append(row);
   });
+  infoSec.append(infoTitle, infoBody);
+  body.append(infoSec);
+
+  // -- BADGES --
+  const badgeSec = el("div", "sum-section");
+  const badgeTitle = el("div", "sum-section-title"); badgeTitle.textContent = "GYM BADGES";
+  const badgeGrid = el("div", "badges-grid");
+  player.badgeList.forEach((earned, i) => {
+    const slot = el("div", `badge-slot${earned ? " earned" : ""}`);
+    const num = el("div", "badge-num"); num.textContent = i + 1;
+    const name = el("div", "badge-name"); name.textContent = BADGE_NAMES[i].toUpperCase();
+    slot.append(num, name);
+    slot.title = BADGE_NAMES[i] + " Badge";
+    badgeGrid.append(slot);
+  });
+  badgeSec.append(badgeTitle, badgeGrid);
+  body.append(badgeSec);
+
+  // -- PARTY --
+  const partySec = el("div", "sum-section");
+  const partyTitle = el("div", "sum-section-title");
+  partyTitle.textContent = `PARTY  (${player.party.length})`;
+  partySec.append(partyTitle);
+  if (player.party.length) {
+    const grid = el("div", "party-grid");
+    player.party.forEach(m => grid.append(monCard(m)));
+    partySec.append(grid);
+  } else {
+    const empty = el("div", "empty-box"); empty.textContent = "NO POKEMON";
+    partySec.append(empty);
+  }
+  body.append(partySec);
+
+  // -- PC BOXES --
+  const alive = player.boxes.filter(m => !m.dead);
+  const dead  = player.boxes.filter(m => m.dead);
+
+  if (alive.length) {
+    const sec = el("div", "sum-section");
+    const t = el("div", "sum-section-title"); t.textContent = `IN PC  (${alive.length})`;
+    sec.append(t);
+    const grid = el("div", "box-grid");
+    alive.forEach(m => grid.append(boxTile(m)));
+    sec.append(grid);
+    body.append(sec);
+  }
+
+  if (dead.length) {
+    const sec = el("div", "sum-section");
+    const t = el("div", "sum-section-title");
+    t.textContent = `FALLEN  (${dead.length})`;
+    t.style.background = "#901820";
+    sec.append(t);
+    const grid = el("div", "box-grid");
+    dead.forEach(m => grid.append(boxTile(m)));
+    sec.append(grid);
+    body.append(sec);
+  }
+
+  if (!player.boxes.length) {
+    const empty = el("div", "empty-box"); empty.textContent = "PC IS EMPTY";
+    body.append(empty);
+  }
+
+  // show
+  $(".summary-panel").classList.add("show");
+  $(".summary-panel").setAttribute("aria-hidden", "false");
+  $(".scrim").classList.add("show");
 }
 
-function renderMarkers() {
+function closePanel() {
+  $(".summary-panel").classList.remove("show");
+  $(".summary-panel").setAttribute("aria-hidden", "true");
+  $(".scrim").classList.remove("show");
+}
+
+$("#panelClose").onclick  = closePanel;
+$("#scrim").onclick       = closePanel;
+document.addEventListener("keydown", e => e.key === "Escape" && closePanel());
+
+// ── Map markers ───────────────────────────────────────────────────────────────
+function renderMarkers(players) {
   const wrap = $("#markers");
   wrap.innerHTML = "";
-  DATA.players.forEach((p) => {
+  players.forEach(p => {
     const m = el("div", "marker");
     m.style.left = p.location.x + "%";
-    m.style.top = p.location.y + "%";
+    m.style.top  = p.location.y + "%";
 
-    const face = faceStyle(p, p._color);
-    face.style.borderColor = p._color;
-    if (p.badges > 0) face.append(el("span", "badgecount", String(p.badges)));
+    const face = makeFace(p);
     m.append(face);
-    m.append(el("div", "pin"));
-    m.append(el("div", "tag", p.trainer));
+
+    if (p.badges > 0) {
+      const bb = el("div", "badge-bubble"); bb.textContent = p.badges;
+      m.append(bb);
+    }
+
+    const tag = el("div", "tag"); tag.textContent = p.trainer;
+    m.append(tag);
+
     m.onclick = () => openPanel(p);
     wrap.append(m);
   });
 }
 
-function monCard(mon, withLevel) {
-  const c = el("div", "mon");
-  const img = el("img");
-  img.src = spriteUrl(mon.dex);
-  img.alt = mon.species;
-  img.onerror = () => { img.style.visibility = "hidden"; };
-  c.append(img);
-
-  if (mon.dead) c.classList.add("mon-dead");
-  const info = el("div");
-  const skull = mon.dead ? ' <span class="dead-icon">💀</span>' : "";
-  const name = hasCustomNick(mon)
-    ? `${mon.nickname} <span class="ml">(${mon.species})</span>`
-    : mon.species;
-  info.append(el("div", "mn", name + skull + (mon.shiny ? ' <span class="shiny">★</span>' : "")));
-
-  const bits = [];
-  if (withLevel && mon.level != null) bits.push("Lv " + mon.level);
-  if (mon.isEgg) bits.push("Egg");
-  if (mon.box) bits.push("Box " + mon.box);
-  if (bits.length) info.append(el("div", "ml", bits.join(" · ")));
-
-  if (withLevel && mon.maxHp) {
-    const pct = Math.max(0, Math.min(100, (mon.hp / mon.maxHp) * 100));
-    const bar = el("div", "hpbar");
-    const fill = el("span");
-    fill.style.width = pct + "%";
-    fill.style.background = pct < 25 ? "var(--bad)" : pct < 50 ? "var(--accent)" : "var(--good)";
-    bar.append(fill);
-    info.append(bar);
-    info.append(el("div", "ml", `${mon.hp}/${mon.maxHp} HP`));
-  }
-  c.append(info);
-  return c;
-}
-
-function openPanel(p) {
-  const body = $("#panelBody");
-  body.innerHTML = "";
-
-  // header
-  const head = el("div", "ph");
-  const face = faceStyle(p, "#2a3b66");
-  head.append(face);
-  const who = el("div", "who");
-  who.append(el("h2", null, p.trainer));
-  who.append(el("div", "sub",
-    `${p.gender === "F" ? "♀" : "♂"} · ID ${p.trainerId} · ${p.location.area}`));
-  head.append(who);
-  body.append(head);
-
-  // play time + badges count
-  const pt = p.playTime;
-  const meta = el("div", "section");
-  meta.append(el("h3", null, "Trainer"));
-  const playStr = `${pt.h}h ${String(pt.m).padStart(2, "0")}m ${String(pt.s).padStart(2, "0")}s`;
-  meta.innerHTML += `
-    <div class="kv"><span class="k">Play time</span><span>${playStr}</span></div>
-    <div class="kv"><span class="k">Badges</span><span>${p.badges} / 8</span></div>
-    <div class="kv"><span class="k">Location</span><span>${p.location.area}</span></div>`;
-  body.append(meta);
-
-  // badges row
-  const bsec = el("div", "section");
-  bsec.append(el("h3", null, "Gym Badges"));
-  const badges = el("div", "badges");
-  p.badgeList.forEach((earned, i) => {
-    const b = el("div", "badge" + (earned ? " earned" : ""), String(i + 1));
-    b.title = BADGE_NAMES[i] + " Badge";
-    badges.append(b);
+// ── Legend / trainer chips ────────────────────────────────────────────────────
+function renderLegend(players) {
+  const nav = $("#legend");
+  nav.innerHTML = "";
+  players.forEach(p => {
+    const chip = el("button", "trainer-chip");
+    chip.style.borderColor = p._color;
+    const dot = el("span", "chip-dot"); dot.style.background = p._color;
+    chip.append(dot, txt(`${p.trainer} · ${p.location.area}`));
+    chip.onclick = () => openPanel(p);
+    nav.append(chip);
   });
-  bsec.append(badges);
-  body.append(bsec);
-
-  // party
-  const party = el("div", "section");
-  party.append(el("h3", null, `Party (${p.party.length})`));
-  if (p.party.length) {
-    const grid = el("div", "mons");
-    p.party.forEach((m) => grid.append(monCard(m, true)));
-    party.append(grid);
-  } else {
-    party.append(el("div", "empty", "No Pokémon in party yet."));
-  }
-  body.append(party);
-
-  // boxes
-  const boxes = el("div", "section");
-  boxes.append(el("h3", null, `PC Boxes (${p.boxes.length})`));
-  if (p.boxes.length) {
-    const grid = el("div", "box-grid");
-    p.boxes.forEach((m) => grid.append(monCard(m, false)));
-    boxes.append(grid);
-  } else {
-    boxes.append(el("div", "empty", "No Pokémon stored in the PC."));
-  }
-  body.append(boxes);
-
-  $("#panel").classList.add("show");
-  $("#panel").setAttribute("aria-hidden", "false");
-  $("#scrim").classList.add("show");
 }
 
-function closePanel() {
-  $("#panel").classList.remove("show");
-  $("#panel").setAttribute("aria-hidden", "true");
-  $("#scrim").classList.remove("show");
+// ── Init ──────────────────────────────────────────────────────────────────────
+async function init() {
+  let DATA = { players: [] };
+  try {
+    const res = await fetch("data.json", { cache: "no-store" });
+    DATA = await res.json();
+  } catch {
+    $("#markers").innerHTML =
+      `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Press Start 2P',monospace;font-size:8px;text-align:center;padding:16px">
+        RUN<br>python parse_saves.py<br>FIRST
+      </div>`;
+    return;
+  }
+  DATA.players.forEach((p, i) => p._color = TRAINER_COLORS[i % TRAINER_COLORS.length]);
+  renderLegend(DATA.players);
+  renderMarkers(DATA.players);
 }
-
-$("#panelClose").onclick = closePanel;
-$("#scrim").onclick = closePanel;
-document.addEventListener("keydown", (e) => e.key === "Escape" && closePanel());
 
 init();

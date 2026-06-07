@@ -1,213 +1,528 @@
+/* =============================================================
+   POKÉMON FIRERED / LEAFGREEN DESIGN SYSTEM
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
-  --bg: #0e1726;
-  --bg2: #16233a;
-  --ink: #eaf2ff;
-  --muted: #9fb3d1;
-  --accent: #ffcb05;   /* Pokemon yellow */
-  --accent2: #3b6cff;  /* Pokemon blue */
-  --panel-w: 380px;
-  --good: #5bd06a;
-  --bad: #ff5d5d;
+  /* FireRed/LeafGreen authentic palette */
+  --red:        #c03028;
+  --red-dark:   #901820;
+  --gold:       #e8b020;
+  --gold-light: #f8d840;
+  --blue:       #3060c0;
+  --blue-dark:  #183888;
+  --blue-light: #5890f0;
+
+  /* Menu / box colours (matches in-game menu boxes) */
+  --box-bg:       #e8f0f8;   /* light blue-cream */
+  --box-border:   #3060c0;   /* blue outline */
+  --box-shadow:   #183060;   /* dark shadow side */
+  --box-header:   #3060c0;
+  --box-text:     #181028;
+
+  /* Screen / page */
+  --screen-bg:    #101828;
+  --screen-ring:  #282838;
+
+  /* HP bar */
+  --hp-full:   #50d058;
+  --hp-mid:    #e8c820;
+  --hp-low:    #d03020;
+  --hp-track:  #181028;
+  --hp-border: #181028;
+
+  /* Misc */
+  --dead-dim:   rgba(0,0,0,.65);
+  --earned-glow: #f8e030;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; }
+/* ---- Reset & base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
 body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: radial-gradient(1200px 600px at 70% -10%, #1d2c49, var(--bg));
-  color: var(--ink);
-  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.8;
+  background: var(--screen-bg);
+  color: var(--box-text);
+  overflow-x: hidden;
 }
 
-/* ---- top bar ---- */
-.topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 14px 22px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  position: sticky; top: 0; z-index: 5;
-  background: rgba(10,16,28,.7); backdrop-filter: blur(8px);
+/* ================================================================
+   TITLE BAR — looks like the game's title / menu bar
+   ================================================================ */
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--blue-dark);
+  border-bottom: 4px solid var(--gold);
+  position: sticky; top: 0; z-index: 10;
+  box-shadow: 0 4px 0 var(--blue);
 }
-.topbar h1 { font-size: 20px; margin: 0; letter-spacing: .5px; }
-.topbar h1 span { color: var(--accent); }
-.legend { display: flex; flex-wrap: wrap; gap: 10px; }
-.legend .chip {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 13px; color: var(--muted);
-  background: rgba(255,255,255,.05); padding: 4px 10px; border-radius: 999px;
-  cursor: pointer; border: 1px solid transparent; transition: .15s;
-}
-.legend .chip:hover { border-color: var(--accent); color: var(--ink); }
-.legend .dot { width: 12px; height: 12px; border-radius: 50%; }
 
-/* ---- map stage ---- */
-.stage { display: flex; justify-content: center; padding: 26px 16px 60px; }
+.title-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.logo-top {
+  font-size: 16px;
+  color: var(--gold-light);
+  text-shadow: 2px 2px 0 var(--gold), -1px -1px 0 var(--red-dark);
+  letter-spacing: 2px;
+}
+.logo-bot {
+  font-size: 7px;
+  color: #b8d8f8;
+  letter-spacing: 1px;
+}
+
+/* trainer chips in the header */
+.trainer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.trainer-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--blue);
+  border: 2px solid var(--box-border);
+  border-bottom: 3px solid var(--box-shadow);
+  border-right: 3px solid var(--box-shadow);
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 7px;
+  color: #fff;
+  transition: filter .1s;
+}
+.trainer-chip:hover { filter: brightness(1.15); }
+.trainer-chip .chip-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.5);
+}
+
+/* ================================================================
+   SCREEN / MAP AREA
+   ================================================================ */
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+  min-height: calc(100vh - 58px);
+}
+
+/* Outer frame — like the GBA screen bezel */
+.map-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: min(1100px, 96vw);
+  width: 100%;
+}
+
+.map-frame-label {
+  background: var(--blue-dark);
+  color: var(--gold-light);
+  font-size: 8px;
+  letter-spacing: 2px;
+  padding: 6px 12px;
+  border: 4px solid var(--box-shadow);
+  border-bottom: none;
+  width: fit-content;
+  margin-left: 8px;
+}
+
 .map-wrap {
-  position: relative; display: inline-block;
-  width: min(1100px, 95vw);
-  border-radius: 14px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.55), 0 0 0 3px rgba(255,255,255,.06);
+  position: relative;
+  border: 6px solid var(--box-shadow);
+  border-top: 4px solid var(--box-shadow);
+  box-shadow:
+    inset 0 0 0 2px var(--box-border),
+    0 8px 32px rgba(0,0,0,.8);
 }
 .map-wrap img {
-  display: block; width: 100%; height: auto;
-  image-rendering: pixelated; /* keeps the pixel town-map crisp */
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
 }
 .markers { position: absolute; inset: 0; pointer-events: none; }
 
-/* lead-Pokemon sprite avatar: show the whole sprite, crisp */
-.marker .face.face-mon, .ph .face.face-mon {
+/* ================================================================
+   MAP MARKERS
+   ================================================================ */
+.marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .1s;
+  filter:
+    drop-shadow(1.5px 0    0 #fff)
+    drop-shadow(-1.5px 0   0 #fff)
+    drop-shadow(0  1.5px   0 #fff)
+    drop-shadow(0 -1.5px   0 #fff)
+    drop-shadow(0 3px 3px rgba(0,0,0,.6));
+}
+.marker:hover { transform: translate(-50%,-55%) scale(1.1); }
+
+.marker .face {
+  width: 72px; height: 72px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   image-rendering: pixelated;
 }
-/* on the map, drop the colored circle — show just the sprite */
-.marker .face.face-mon {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  width: 74px; height: 74px;
-  /* white outline tracing the sprite's shape, plus a soft drop shadow */
-  filter:
-    drop-shadow(1.5px 0 0 #fff)  drop-shadow(-1.5px 0 0 #fff)
-    drop-shadow(0 1.5px 0 #fff)  drop-shadow(0 -1.5px 0 #fff)
-    drop-shadow(1px 1px 0 #fff)  drop-shadow(-1px -1px 0 #fff)
-    drop-shadow(1px -1px 0 #fff) drop-shadow(-1px 1px 0 #fff)
-    drop-shadow(0 3px 3px rgba(0,0,0,.55));
-}
-.marker .face.face-mon + .pin { display: none; }
-
-/* ---- a player marker ---- */
-.marker {
-  position: absolute; transform: translate(-50%, -50%);
-  pointer-events: auto; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center;
-  transition: transform .12s ease;
-}
-.marker:hover { transform: translate(-50%, -55%) scale(1.08); z-index: 3; }
-.marker .face {
-  width: 46px; height: 46px; border-radius: 50%;
-  border: 3px solid var(--accent); background-size: cover; background-position: center;
-  background-color: var(--accent2);
+/* Fallback initial circle (empty party) */
+.marker .face.face-init {
+  width: 40px; height: 40px;
+  border-radius: 50%;
   display: grid; place-items: center;
-  font-weight: 700; font-size: 18px; color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.5);
-}
-.marker .pin {
-  width: 0; height: 0; margin-top: -2px;
-  border-left: 7px solid transparent; border-right: 7px solid transparent;
-  border-top: 9px solid var(--accent);
-  filter: drop-shadow(0 3px 2px rgba(0,0,0,.4));
-}
-.marker .tag {
-  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  margin-top: 1px; font-size: 11px; font-weight: 600;
-  background: rgba(10,16,28,.85); padding: 2px 7px; border-radius: 6px;
-  white-space: nowrap; color: var(--ink);
-}
-.marker .badgecount {
-  position: absolute; top: -6px; right: -6px;
-  background: var(--accent); color: #1a1a1a; font-size: 10px; font-weight: 800;
-  min-width: 17px; height: 17px; border-radius: 999px;
-  display: grid; place-items: center; padding: 0 3px;
-  border: 2px solid var(--bg);
+  font-size: 14px; font-weight: 700; color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
 
-/* ---- detail panel ---- */
+.marker .badge-bubble {
+  position: absolute;
+  top: -6px; right: -2px;
+  background: var(--gold);
+  color: var(--box-shadow);
+  font-size: 7px;
+  min-width: 16px; height: 16px;
+  border-radius: 999px;
+  display: grid; place-items: center;
+  padding: 0 3px;
+  border: 2px solid var(--box-shadow);
+}
+
+.marker .tag {
+  margin-top: 2px;
+  background: var(--blue-dark);
+  color: #fff;
+  font-size: 7px;
+  padding: 2px 6px;
+  border: 2px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  white-space: nowrap;
+  letter-spacing: .5px;
+}
+
+/* ================================================================
+   SUMMARY PANEL — styled like the game's Summary Screen
+   ================================================================ */
 .scrim {
-  position: fixed; inset: 0; background: rgba(0,0,0,.45);
-  opacity: 0; pointer-events: none; transition: .2s; z-index: 8;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s; z-index: 20;
 }
 .scrim.show { opacity: 1; pointer-events: auto; }
-.panel {
-  position: fixed; top: 0; right: 0; height: 100dvh; width: var(--panel-w);
-  max-width: 92vw; background: var(--bg2);
-  box-shadow: -16px 0 50px rgba(0,0,0,.6);
-  transform: translateX(100%); transition: transform .25s ease;
-  z-index: 9;
+
+.summary-panel {
+  position: fixed; top: 0; right: 0;
+  height: 100dvh; width: 400px; max-width: 95vw;
   display: flex; flex-direction: column;
+  background: var(--box-bg);
+  border-left: 6px solid var(--box-shadow);
+  box-shadow: -8px 0 32px rgba(0,0,0,.7);
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  z-index: 21;
 }
-.panel.show { transform: translateX(0); }
-.panel-close {
-  position: absolute; top: 12px; right: 14px; z-index: 2;
-  background: rgba(255,255,255,.08); color: var(--ink); border: none;
-  width: 34px; height: 34px; border-radius: 50%; font-size: 22px; cursor: pointer;
-}
-.panel-close:hover { background: rgba(255,255,255,.18); }
-.panel-body {
-  flex: 1; overflow-y: auto; padding-bottom: 40px;
-  /* nice scrollbar */
+.summary-panel.show { transform: translateX(0); }
+
+.summary-body {
+  flex: 1;
+  overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.15) transparent;
+  scrollbar-color: var(--blue) var(--box-bg);
+  padding-bottom: 8px;
 }
 
-/* panel header */
-.ph {
-  padding: 26px 22px 18px; display: flex; gap: 16px; align-items: center;
-  background: linear-gradient(135deg, var(--accent2), #6a4cff);
-}
-.ph .face {
-  width: 64px; height: 64px; border-radius: 50%; flex: none;
-  border: 3px solid #fff; background-size: cover; background-position: center;
-  display: grid; place-items: center; font-size: 26px; font-weight: 800; color:#fff;
-  background-color: #2a3b66;
-}
-.ph .who h2 { margin: 0 0 4px; font-size: 22px; }
-.ph .who .sub { font-size: 13px; color: rgba(255,255,255,.85); }
-
-.section { padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.06); }
-.section h3 {
-  margin: 0 0 12px; font-size: 13px; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--muted);
+.summary-footer {
+  flex: none;
+  padding: 8px 12px;
+  background: var(--blue-dark);
+  border-top: 4px solid var(--box-shadow);
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* badges */
-.badges { display: flex; gap: 8px; flex-wrap: wrap; }
-.badge {
-  width: 38px; height: 38px; border-radius: 9px;
-  display: grid; place-items: center; font-size: 11px; font-weight: 700;
-  background: rgba(255,255,255,.05); color: var(--muted);
-  border: 1px solid rgba(255,255,255,.08);
+/* ---- Pokémon-style button ---- */
+.poke-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #fff;
+  background: var(--blue);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-bottom: 4px solid var(--box-shadow);
+  border-right: 4px solid var(--box-shadow);
+  border-top: 2px solid var(--blue-light);
+  border-left: 2px solid var(--blue-light);
+  transition: filter .1s;
 }
-.badge.earned {
-  background: radial-gradient(circle at 35% 30%, #fff2a8, var(--accent));
-  color: #5a4500; border-color: #fff2a8;
-  box-shadow: 0 2px 8px rgba(255,203,5,.4);
+.poke-btn:hover { filter: brightness(1.2); }
+.poke-btn:active {
+  border-bottom: 2px solid var(--box-shadow);
+  border-right: 2px solid var(--box-shadow);
+  border-top: 4px solid var(--box-shadow);
+  border-left: 4px solid var(--box-shadow);
+  transform: translate(2px, 2px);
 }
 
-/* info rows */
-.kv { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; }
-.kv .k { color: var(--muted); }
+/* ================================================================
+   PANEL SECTIONS — the game's menu-box style
+   ================================================================ */
 
-/* pokemon list */
-.mons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.mon {
-  display: flex; gap: 10px; align-items: center;
-  background: rgba(255,255,255,.04); border-radius: 10px; padding: 8px 10px;
-  border: 1px solid rgba(255,255,255,.06);
+/* Trainer header (top of panel) */
+.sum-header {
+  background: var(--blue-dark);
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 4px solid var(--box-shadow);
 }
-.mon img {
-  width: 48px; height: 48px; image-rendering: pixelated; flex: none;
-  background: rgba(255,255,255,.04); border-radius: 8px;
+.sum-header .trainer-sprite {
+  width: 64px; height: 64px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
+  flex: none;
+  border: 3px solid var(--gold);
+  background-color: var(--blue);
 }
-.mon .mn { font-size: 13px; font-weight: 600; line-height: 1.2; }
-.mon .ml { font-size: 11px; color: var(--muted); }
-.mon .shiny { color: var(--accent); }
-.mon-dead { opacity: 0.55; }
-.mon-dead img { filter: grayscale(1); }
-.dead-icon { font-size: 12px; }
-.hpbar {
-  height: 5px; border-radius: 3px; background: rgba(255,255,255,.12);
-  margin-top: 4px; overflow: hidden;
+.sum-header .trainer-sprite.face-init {
+  display: grid; place-items: center;
+  font-size: 20px; color: #fff; font-family: inherit;
 }
-.hpbar > span { display: block; height: 100%; background: var(--good); }
+.sum-header .trainer-info { flex: 1; }
+.sum-header .trainer-name {
+  font-size: 12px; color: var(--gold-light);
+  text-shadow: 1px 1px 0 var(--red-dark);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.sum-header .trainer-sub {
+  font-size: 7px; color: #a8c8e8; line-height: 2;
+}
 
-.empty {
-  font-size: 13px; color: var(--muted); font-style: italic;
-  background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.12);
-  padding: 14px; border-radius: 10px; text-align: center;
+/* Generic section box */
+.sum-section {
+  margin: 8px 8px 0;
+  background: var(--box-bg);
+  border: 3px solid var(--box-border);
+  border-bottom: 4px solid var(--box-shadow);
+  border-right: 4px solid var(--box-shadow);
 }
-.box-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
-.box-grid .mon { flex-direction: column; text-align: center; padding: 4px 2px; gap: 2px; }
-.box-grid .mon img { width: 40px; height: 40px; }
-.box-grid .mon .mn { font-size: 10px; line-height: 1.1; }
-.box-grid .mon .ml { font-size: 9px; }
+.sum-section-title {
+  background: var(--box-border);
+  color: #fff;
+  font-size: 7px;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+}
+.sum-section-body { padding: 8px; }
+
+/* Key-value rows */
+.kv {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--box-border);
+  font-size: 7px;
+  gap: 8px;
+}
+.kv:last-child { border-bottom: none; }
+.kv .k { color: var(--blue-dark); flex: none; }
+.kv .v { color: var(--box-text); text-align: right; word-break: break-all; }
+
+/* ================================================================
+   GYM BADGES — like the badge case
+   ================================================================ */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 8px;
+}
+.badge-slot {
+  aspect-ratio: 1;
+  border: 2px solid var(--box-border);
+  border-bottom: 3px solid var(--box-shadow);
+  border-right: 3px solid var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 6px;
+  color: var(--blue-dark);
+  background: #d8e8f0;
+  transition: background .2s;
+}
+.badge-slot.earned {
+  background: radial-gradient(circle at 35% 30%, #fff8b0, var(--gold));
+  color: var(--box-shadow);
+  box-shadow: 0 0 6px 1px var(--gold-light);
+  border-color: var(--gold);
+  border-bottom-color: #a87800;
+  border-right-color: #a87800;
+}
+.badge-slot .badge-num {
+  font-size: 9px;
+  font-weight: 700;
+}
+.badge-slot .badge-name { font-size: 5px; letter-spacing: 0; }
+
+/* ================================================================
+   PARTY GRID
+   ================================================================ */
+.party-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 8px;
+}
+.mon-card {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: #d8e8f8;
+  border: 2px solid var(--box-border);
+  border-bottom: 3px solid var(--box-shadow);
+  border-right: 3px solid var(--box-shadow);
+  padding: 5px;
+}
+.mon-card img {
+  width: 48px; height: 48px;
+  image-rendering: pixelated;
+  flex: none;
+  background: transparent;
+}
+.mon-card .mon-info { flex: 1; min-width: 0; }
+.mon-card .mon-name {
+  font-size: 7px;
+  color: var(--box-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+.mon-card .mon-nick {
+  font-size: 6px;
+  color: var(--blue-dark);
+  margin-bottom: 4px;
+}
+.mon-card .mon-lvl {
+  font-size: 6px;
+  color: var(--blue-dark);
+  margin-bottom: 4px;
+}
+
+/* HP bar — game accurate style */
+.hp-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+.hp-label {
+  font-size: 6px;
+  color: var(--blue-dark);
+  flex: none;
+  width: 12px;
+}
+.hp-track {
+  flex: 1;
+  height: 6px;
+  background: var(--hp-track);
+  border: 1px solid var(--hp-border);
+}
+.hp-fill {
+  height: 100%;
+  transition: width .3s;
+}
+.hp-fill.hp-full  { background: var(--hp-full); }
+.hp-fill.hp-mid   { background: var(--hp-mid); }
+.hp-fill.hp-low   { background: var(--hp-low); }
+.hp-nums { font-size: 5px; color: var(--blue-dark); }
+
+/* ================================================================
+   PC BOX GRID — like the PC storage screen
+   ================================================================ */
+.box-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+.box-mon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #d8e8f8;
+  border: 2px solid var(--box-border);
+  border-bottom: 3px solid var(--box-shadow);
+  border-right: 3px solid var(--box-shadow);
+  padding: 3px 2px;
+  position: relative;
+}
+.box-mon img {
+  width: 40px; height: 40px;
+  image-rendering: pixelated;
+}
+.box-mon .bm-name {
+  font-size: 5.5px;
+  color: var(--box-text);
+  text-align: center;
+  line-height: 1.4;
+  word-break: break-word;
+}
+.box-mon .bm-box { font-size: 5px; color: var(--blue-dark); }
+
+/* Dead styling */
+.mon-card.mon-dead,
+.box-mon.mon-dead {
+  filter: grayscale(.8) brightness(.7);
+}
+.mon-card.mon-dead::after,
+.box-mon.mon-dead::after {
+  content: '✝';
+  position: absolute;
+  top: 2px; right: 3px;
+  font-size: 9px;
+  color: var(--red);
+  font-family: serif;
+  text-shadow: 0 0 3px #000;
+}
+.shiny-star { color: var(--gold-light); font-size: 7px; }
+
+/* Empty state */
+.empty-box {
+  font-size: 7px;
+  color: var(--blue-dark);
+  text-align: center;
+  padding: 12px 8px;
+  border: 2px dashed var(--box-border);
+  margin: 8px;
+}

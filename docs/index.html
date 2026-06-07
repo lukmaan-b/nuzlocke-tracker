@@ -4,25 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kanto Nuzlocke Tracker</title>
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="topbar">
-    <h1>Kanto Nuzlocke <span>Tracker</span></h1>
-    <div class="legend" id="legend"></div>
+
+  <!-- GBA-style title bar -->
+  <header class="titlebar">
+    <div class="title-logo">
+      <span class="logo-top">POKÉMON</span>
+      <span class="logo-bot">NUZLOCKE TRACKER</span>
+    </div>
+    <nav class="trainer-chips" id="legend"></nav>
   </header>
 
-  <main class="stage">
-    <div class="map-wrap" id="mapWrap">
-      <img src="assets/townmap.png?v=2" alt="Kanto Town Map" id="mapImg" />
-      <div class="markers" id="markers"></div>
+  <!-- Main map screen -->
+  <main class="screen">
+    <div class="map-frame">
+      <div class="map-frame-label">KANTO REGION MAP</div>
+      <div class="map-wrap" id="mapWrap">
+        <img src="assets/townmap.png?v=2" alt="Kanto Town Map" id="mapImg" />
+        <div class="markers" id="markers"></div>
+      </div>
     </div>
   </main>
 
-  <!-- Trainer detail panel -->
-  <aside class="panel" id="panel" aria-hidden="true">
-    <button class="panel-close" id="panelClose" title="Close">&times;</button>
-    <div class="panel-body" id="panelBody"></div>
+  <!-- Summary-screen-style detail panel -->
+  <aside class="summary-panel" id="panel" aria-hidden="true">
+    <div class="summary-body" id="panelBody"></div>
+    <div class="summary-footer">
+      <button class="poke-btn" id="panelClose">CLOSE</button>
+    </div>
   </aside>
   <div class="scrim" id="scrim"></div>
 
