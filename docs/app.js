@@ -6,12 +6,20 @@ const BADGE_NAMES = [
 ];
 
 const TRAINER_COLORS = [
-  "#3060c0","#c03028","#28a040","#9050c8",
-  "#e87820","#18a8a0","#d050a0","#a09028",
+  "#0A84FF","#FF453A","#30D158","#BF5AF2",
+  "#FF9F0A","#5AC8FA","#FF375F","#FFD60A",
 ];
 
 const spriteUrl = (dex) =>
   dex ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dex}.png` : "";
+
+function hexToRgb(hex) {
+  return [
+    parseInt(hex.slice(1, 3), 16),
+    parseInt(hex.slice(3, 5), 16),
+    parseInt(hex.slice(5, 7), 16),
+  ];
+}
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, cls) => { const e = document.createElement(tag); if (cls) e.className = cls; return e; };
@@ -128,6 +136,13 @@ function openPanel(player) {
   const body = $(".summary-body");
   body.innerHTML = "";
 
+  // tint the panel glass with the trainer's identity color
+  const [r, g, b] = hexToRgb(player._color);
+  $(".summary-panel").style.background = [
+    `linear-gradient(180deg, rgba(${r},${g},${b},0.22) 0%, rgba(${r},${g},${b},0) 240px)`,
+    `rgba(14, 14, 20, 0.80)`,
+  ].join(", ");
+
   // -- HEADER --
   const hdr = el("div", "sum-header");
   const spr = makeFace(player, "trainer-sprite");
@@ -212,7 +227,7 @@ function openPanel(player) {
     const sec = el("div", "sum-section");
     const t = el("div", "sum-section-title");
     t.textContent = `FALLEN  (${dead.length})`;
-    t.style.background = "#901820";
+    t.classList.add("fallen");
     sec.append(t);
     const grid = el("div", "box-grid");
     dead.forEach(m => grid.append(boxTile(m)));
@@ -251,6 +266,9 @@ function renderMarkers(players) {
     m.style.top  = p.location.y + "%";
 
     const face = makeFace(p);
+    // colored identity ring: solid ring + soft glow matching trainer color
+    const [r, g, b] = hexToRgb(p._color);
+    face.style.boxShadow = `0 0 0 2.5px rgba(${r},${g},${b},0.90), 0 0 16px rgba(${r},${g},${b},0.40), 0 4px 12px rgba(0,0,0,0.65)`;
     m.append(face);
 
     if (p.badges > 0) {
@@ -259,6 +277,7 @@ function renderMarkers(players) {
     }
 
     const tag = el("div", "tag"); tag.textContent = p.trainer;
+    tag.style.borderColor = `rgba(${r},${g},${b},0.45)`;
     m.append(tag);
 
     m.onclick = () => openPanel(p);
@@ -272,7 +291,11 @@ function renderLegend(players) {
   nav.innerHTML = "";
   players.forEach(p => {
     const chip = el("button", "trainer-chip");
-    chip.style.borderColor = p._color;
+    const [r, g, b] = hexToRgb(p._color);
+    // color-tinted glass: shimmer gradient + trainer color bleed
+    chip.style.background = `linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0) 50%), rgba(${r},${g},${b},0.15)`;
+    chip.style.borderColor = `rgba(${r},${g},${b},0.35)`;
+    chip.style.boxShadow = `inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 14px rgba(${r},${g},${b},0.28)`;
     const dot = el("span", "chip-dot"); dot.style.background = p._color;
     chip.append(dot, txt(`${p.trainer} · ${p.location.area}`));
     chip.onclick = () => openPanel(p);
@@ -288,8 +311,8 @@ async function init() {
     DATA = await res.json();
   } catch {
     $("#markers").innerHTML =
-      `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Press Start 2P',monospace;font-size:8px;text-align:center;padding:16px">
-        RUN<br>python parse_saves.py<br>FIRST
+      `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45);font-family:-apple-system,system-ui,sans-serif;font-size:13px;font-weight:600;text-align:center;padding:16px;letter-spacing:0.02em">
+        Run python parse_saves.py first
       </div>`;
     return;
   }
