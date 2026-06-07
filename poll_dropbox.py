@@ -97,6 +97,15 @@ def main():
         print(f"  No .sav files found in {FOLDER}")
         return
 
+    # Names that should be in saves/ after this sync
+    dropbox_names = {e["name"] for e in sav_files}
+
+    # Remove any local saves that are NOT in Dropbox (stale/manual files)
+    for local in list(SAVES_DIR.glob("*.sav")) + list(SAVES_DIR.glob("*.srm")):
+        if local.name not in dropbox_names:
+            print(f"  {local.name:20s} not in Dropbox — removing")
+            local.unlink()
+
     updated = 0
     for entry in sav_files:
         name    = entry["name"]
