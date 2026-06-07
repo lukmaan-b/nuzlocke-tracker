@@ -6,9 +6,9 @@
       "gender": "M",
       "trainerId": 59172,
       "playTime": {
-        "h": 6,
-        "m": 41,
-        "s": 55
+        "h": 8,
+        "m": 43,
+        "s": 19
       },
       "badges": 3,
       "badgeList": [
@@ -22,12 +22,12 @@
         false
       ],
       "location": {
-        "area": "Vermilion City",
-        "x": 65.0,
-        "y": 60.0,
+        "area": "Lavender Town",
+        "x": 80.0,
+        "y": 47.0,
         "known": true,
-        "mapGroup": 3,
-        "mapNum": 5
+        "mapGroup": 8,
+        "mapNum": 0
       },
       "party": [
         {
@@ -36,23 +36,11 @@
           "nickname": "NIDORINO",
           "shiny": false,
           "isEgg": false,
-          "heldItem": null,
-          "exp": 15741,
-          "level": 27,
-          "hp": 76,
-          "maxHp": 76
-        },
-        {
-          "species": "Mankey",
-          "dex": 56,
-          "nickname": "MANKEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 7111,
-          "level": 19,
-          "hp": 46,
-          "maxHp": 46
+          "heldItem": 190,
+          "exp": 20924,
+          "level": 29,
+          "hp": 81,
+          "maxHp": 81
         },
         {
           "species": "Ivysaur",
@@ -61,10 +49,22 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 12942,
-          "level": 25,
-          "hp": 68,
-          "maxHp": 68
+          "exp": 17049,
+          "level": 27,
+          "hp": 72,
+          "maxHp": 72
+        },
+        {
+          "species": "Gyarados",
+          "dex": 130,
+          "nickname": "GYARADOS",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 31345,
+          "level": 29,
+          "hp": 98,
+          "maxHp": 98
         },
         {
           "species": "Rattata",
@@ -85,22 +85,22 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 5661,
-          "level": 20,
-          "hp": 57,
-          "maxHp": 57
+          "exp": 7322,
+          "level": 21,
+          "hp": 59,
+          "maxHp": 59
         },
         {
-          "species": "Gyarados",
-          "dex": 130,
-          "nickname": "GYARADOS",
+          "species": "Geodude",
+          "dex": 74,
+          "nickname": "GEODUDE",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 13030,
-          "level": 21,
-          "hp": 73,
-          "maxHp": 73
+          "exp": 3120,
+          "level": 17,
+          "hp": 43,
+          "maxHp": 43
         }
       ],
       "boxes": [
@@ -143,9 +143,19 @@
           "heldItem": null,
           "exp": 474,
           "box": 1
+        },
+        {
+          "species": "Mankey",
+          "dex": 56,
+          "nickname": "MANKEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 9223,
+          "box": 1
         }
       ],
-      "boxCount": 4
+      "boxCount": 5
     },
     {
       "id": "lukmaan",
