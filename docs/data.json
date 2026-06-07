@@ -6,53 +6,41 @@
       "gender": "M",
       "trainerId": 59172,
       "playTime": {
-        "h": 8,
-        "m": 43,
-        "s": 19
+        "h": 13,
+        "m": 20,
+        "s": 2
       },
-      "badges": 3,
+      "badges": 4,
       "badgeList": [
         true,
         true,
         true,
-        false,
+        true,
         false,
         false,
         false,
         false
       ],
       "location": {
-        "area": "Lavender Town",
-        "x": 80.0,
-        "y": 47.0,
+        "area": "Fuchsia City",
+        "x": 57.0,
+        "y": 80.0,
         "known": true,
-        "mapGroup": 8,
-        "mapNum": 0
+        "mapGroup": 3,
+        "mapNum": 7
       },
       "party": [
         {
-          "species": "Nidorino",
-          "dex": 33,
-          "nickname": "NIDORINO",
+          "species": "Nidoking",
+          "dex": 34,
+          "nickname": "NIDOKING",
           "shiny": false,
           "isEgg": false,
           "heldItem": 190,
-          "exp": 20924,
-          "level": 29,
-          "hp": 81,
-          "maxHp": 81
-        },
-        {
-          "species": "Ivysaur",
-          "dex": 2,
-          "nickname": "IVYSAUR",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 17049,
-          "level": 27,
-          "hp": 72,
-          "maxHp": 72
+          "exp": 41344,
+          "level": 36,
+          "hp": 116,
+          "maxHp": 116
         },
         {
           "species": "Gyarados",
@@ -61,10 +49,10 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 31345,
-          "level": 29,
-          "hp": 98,
-          "maxHp": 98
+          "exp": 61874,
+          "level": 36,
+          "hp": 128,
+          "maxHp": 128
         },
         {
           "species": "Rattata",
@@ -73,34 +61,46 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 7373,
+          "exp": 7514,
           "level": 19,
-          "hp": 44,
-          "maxHp": 44
+          "hp": 46,
+          "maxHp": 46
         },
         {
-          "species": "Pidgeotto",
-          "dex": 17,
-          "nickname": "PIDGEOTTO",
+          "species": "Venusaur",
+          "dex": 3,
+          "nickname": "VENUSAUR",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 7322,
-          "level": 21,
-          "hp": 59,
-          "maxHp": 59
+          "exp": 40296,
+          "level": 36,
+          "hp": 116,
+          "maxHp": 116
         },
         {
-          "species": "Geodude",
-          "dex": 74,
-          "nickname": "GEODUDE",
+          "species": "Jolteon",
+          "dex": 135,
+          "nickname": "JOLTEON",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 3120,
-          "level": 17,
-          "hp": 43,
-          "maxHp": 43
+          "exp": 27313,
+          "level": 30,
+          "hp": 88,
+          "maxHp": 88
+        },
+        {
+          "species": "Snorlax",
+          "dex": 143,
+          "nickname": "SNORLAX",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 33750,
+          "level": 30,
+          "hp": 145,
+          "maxHp": 145
         }
       ],
       "boxes": [
@@ -153,9 +153,49 @@
           "heldItem": null,
           "exp": 9223,
           "box": 1
+        },
+        {
+          "species": "Pidgeotto",
+          "dex": 17,
+          "nickname": "PIDGEOTTO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 30840,
+          "box": 1
+        },
+        {
+          "species": "Gastly",
+          "dex": 92,
+          "nickname": "GASTLY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2035,
+          "box": 1
+        },
+        {
+          "species": "Kadabra",
+          "dex": 64,
+          "nickname": "KADABRA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 11799,
+          "box": 1
+        },
+        {
+          "species": "Graveler",
+          "dex": 75,
+          "nickname": "GRAVELER",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 26276,
+          "box": 1
         }
       ],
-      "boxCount": 5
+      "boxCount": 9
     },
     {
       "id": "lukmaan",
