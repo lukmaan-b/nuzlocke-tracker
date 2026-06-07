@@ -44,6 +44,28 @@ _DEX = [
     "Smeargle","Tyrogue","Hitmontop","Smoochum","Elekid","Magby","Miltank",
     "Blissey","Raikou","Entei","Suicune","Larvitar","Pupitar","Tyranitar",
     "Lugia","Ho-Oh","Celebi",
+    # Gen 3 / Hoenn (FRLG+ additions, indices 252-386)
+    "Treecko","Grovyle","Sceptile","Torchic","Combusken","Blaziken",
+    "Mudkip","Marshtomp","Swampert","Poochyena","Mightyena","Zigzagoon",
+    "Linoone","Wurmple","Silcoon","Beautifly","Cascoon","Dustox",
+    "Lotad","Lombre","Ludicolo","Seedot","Nuzleaf","Shiftry",
+    "Nincada","Ninjask","Shedinja","Taillow","Swellow","Shroomish",
+    "Breloom","Spinda","Wingull","Pelipper","Surskit","Masquerain",
+    "Wailmer","Wailord","Skitty","Delcatty","Kecleon","Baltoy","Claydol",
+    "Nosepass","Torkoal","Sableye","Barboach","Whiscash","Luvdisc",
+    "Corphish","Crawdaunt","Feebas","Milotic","Carvanha","Sharpedo",
+    "Trapinch","Vibrava","Flygon","Makuhita","Hariyama","Electrike",
+    "Manectric","Numel","Camerupt","Spheal","Sealeo","Walrein",
+    "Cacnea","Cacturne","Snorunt","Glalie","Lunatone","Solrock",
+    "Azurill","Spoink","Grumpig","Plusle","Minun","Mawile","Meditite",
+    "Medicham","Swablu","Altaria","Wynaut","Duskull","Dusclops","Roselia",
+    "Slakoth","Vigoroth","Slaking","Gulpin","Swalot","Tropius","Whismur",
+    "Loudred","Exploud","Clamperl","Huntail","Gorebyss","Absol","Shuppet",
+    "Banette","Seviper","Zangoose","Relicanth","Aron","Lairon","Aggron",
+    "Castform","Volbeat","Illumise","Lileep","Cradily","Anorith","Armaldo",
+    "Ralts","Kirlia","Gardevoir","Bagon","Shelgon","Salamence","Beldum",
+    "Metang","Metagross","Regirock","Regice","Registeel","Kyogre","Groudon",
+    "Rayquaza","Latias","Latios","Jirachi","Deoxys","Chimecho",
 ]
 
 def species_name(idx):
@@ -52,8 +74,10 @@ def species_name(idx):
     return f"Unknown ({idx})"
 
 def species_dex(idx):
-    """National Dex number for sprite lookup (1-251 == internal index in FRLG)."""
-    if 1 <= idx <= 251:
+    """National Dex number for sprite lookup.
+    FRLG vanilla: internal 1-251 == National Dex.
+    FRLG+ adds Hoenn mons at internal 252-386, same as National Dex."""
+    if 1 <= idx <= 386:
         return idx
     return None
 

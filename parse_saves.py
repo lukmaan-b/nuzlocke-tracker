@@ -87,7 +87,7 @@ def decode_mon(b, party_format, tid_full):
     exp = struct.unpack_from("<I", G, 4)[0]
     misc = struct.unpack_from("<I", M, 4)[0]
     is_egg = (misc >> 30) & 1
-    if species == 0:
+    if species == 0 or species > 500:   # 500 = safe upper bound; real mons are 1-386
         return None
 
     nick = decode_str(b[8:18])
