@@ -90,6 +90,13 @@ def decode_mon(b, party_format, tid_full):
     if species == 0 or species > 500:   # 500 = safe upper bound; real mons are 1-386
         return None
 
+    # FRLG+ Nuzlocke dead flag: boxHP is stored in bits 0-9 of G[10:12].
+    # boxHP == 0 means the Pokemon permanently fainted in Nuzlocke mode.
+    # Vanilla saves always have G[10:12] == 0, so this is harmless there.
+    box_hp_packed = struct.unpack_from("<H", G, 10)[0]
+    box_hp = box_hp_packed & 0x3FF   # bits 0-9
+    is_nuzlocke_dead = (box_hp == 0) and not party_format
+
     nick = decode_str(b[8:18])
     ot = decode_str(b[0x14:0x1B])
 
@@ -106,6 +113,7 @@ def decode_mon(b, party_format, tid_full):
         "isEgg": bool(is_egg),
         "heldItem": held or None,
         "exp": exp,
+        "dead": bool(is_nuzlocke_dead),
     }
     if party_format:
         mon["level"] = b[0x54]
@@ -152,29 +160,16 @@ def parse_save(path):
             if mon:
                 party.append(mon)
 
-    # --- FRLG+ Nuzlocke dead flags ---
-    # Stored as individual game flags in the SB1 flags section (at SB1[0x0EE0]).
-    # Base flag: 0x042F. Flag for box slot `flat` = 0x042F + flat.
-    # Vanilla saves have these flags clear (no harm).
-    FLAGS_BASE = 0x0EE0
-    DEAD_FLAG_BASE = 0x042F
-
-    def is_dead(flat_idx):
-        flag = DEAD_FLAG_BASE + flat_idx
-        return bool((SB1[FLAGS_BASE + (flag >> 3)] >> (flag & 7)) & 1)
-
     # --- PC boxes: sections 5-13 ---
     PC = reconstruct(data, secs, (5, 6, 7, 8, 9, 10, 11, 12, 13))
     boxes = [[] for _ in range(14)]
     base = 4  # u32 currentBox precedes the box data
     for b in range(14):
         for s in range(30):
-            flat_idx = b * 30 + s
-            off = base + flat_idx * 80
+            off = base + (b * 30 + s) * 80
             mon = decode_mon(PC[off:off + 80], False, tid_full)
             if mon:
                 mon["box"] = b + 1
-                mon["dead"] = is_dead(flat_idx)
                 boxes[b].append(mon)
     box_flat = [m for box in boxes for m in box]
 
