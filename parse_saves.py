@@ -152,14 +152,16 @@ def parse_save(path):
             if mon:
                 party.append(mon)
 
-    # --- FRLG+ Nuzlocke dead flags (SB1 offset 0x0a9e, 53 bytes, 1 bit per box slot) ---
-    # Bit index = box*30 + slot; set = permanently fainted in Nuzlocke mode.
-    # Only present in FRLG+; vanilla saves will just have zeros here (no harm).
-    DEAD_FLAGS_OFF = 0x0a9e
-    dead_flags = SB1[DEAD_FLAGS_OFF:DEAD_FLAGS_OFF + 53]
+    # --- FRLG+ Nuzlocke dead flags ---
+    # Stored as individual game flags in the SB1 flags section (at SB1[0x0EE0]).
+    # Base flag: 0x042F. Flag for box slot `flat` = 0x042F + flat.
+    # Vanilla saves have these flags clear (no harm).
+    FLAGS_BASE = 0x0EE0
+    DEAD_FLAG_BASE = 0x042F
 
     def is_dead(flat_idx):
-        return bool((dead_flags[flat_idx >> 3] >> (flat_idx & 7)) & 1)
+        flag = DEAD_FLAG_BASE + flat_idx
+        return bool((SB1[FLAGS_BASE + (flag >> 3)] >> (flag & 7)) & 1)
 
     # --- PC boxes: sections 5-13 ---
     PC = reconstruct(data, secs, (5, 6, 7, 8, 9, 10, 11, 12, 13))

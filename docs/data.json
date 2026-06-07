@@ -374,7 +374,7 @@
           "heldItem": null,
           "exp": 1728,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Oddish",
@@ -385,7 +385,7 @@
           "heldItem": null,
           "exp": 6946,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Machop",
@@ -396,7 +396,7 @@
           "heldItem": null,
           "exp": 3120,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Ekans",
@@ -407,7 +407,7 @@
           "heldItem": null,
           "exp": 2299,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Jigglypuff",
@@ -418,7 +418,7 @@
           "heldItem": null,
           "exp": 3519,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Doduo",
@@ -429,7 +429,7 @@
           "heldItem": null,
           "exp": 17576,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Snorlax",
@@ -440,7 +440,7 @@
           "heldItem": null,
           "exp": 33750,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Voltorb",
@@ -451,7 +451,7 @@
           "heldItem": null,
           "exp": 2744,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Eevee",
@@ -462,7 +462,7 @@
           "heldItem": null,
           "exp": 15625,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Parasect",
@@ -473,7 +473,7 @@
           "heldItem": null,
           "exp": 15625,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Rhyhorn",
@@ -484,7 +484,7 @@
           "heldItem": null,
           "exp": 21970,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Venomoth",
@@ -495,7 +495,7 @@
           "heldItem": null,
           "exp": 32768,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Exeggcute",
@@ -506,7 +506,7 @@
           "heldItem": null,
           "exp": 19531,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Psyduck",
@@ -679,7 +679,7 @@
           "heldItem": null,
           "exp": 1000,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Rattata",
@@ -690,7 +690,7 @@
           "heldItem": null,
           "exp": 27,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Weedle",
@@ -701,7 +701,7 @@
           "heldItem": null,
           "exp": 512,
           "box": 1,
-          "dead": false
+          "dead": true
         },
         {
           "species": "Meowth",
@@ -712,7 +712,7 @@
           "heldItem": null,
           "exp": 1000,
           "box": 1,
-          "dead": false
+          "dead": true
         }
       ],
       "boxCount": 4
