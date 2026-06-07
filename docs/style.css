@@ -186,6 +186,9 @@ body {
 .mon .mn { font-size: 13px; font-weight: 600; line-height: 1.2; }
 .mon .ml { font-size: 11px; color: var(--muted); }
 .mon .shiny { color: var(--accent); }
+.mon-dead { opacity: 0.55; }
+.mon-dead img { filter: grayscale(1); }
+.dead-icon { font-size: 12px; }
 .hpbar {
   height: 5px; border-radius: 3px; background: rgba(255,255,255,.12);
   margin-top: 4px; overflow: hidden;

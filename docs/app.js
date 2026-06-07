@@ -110,11 +110,13 @@ function monCard(mon, withLevel) {
   img.onerror = () => { img.style.visibility = "hidden"; };
   c.append(img);
 
+  if (mon.dead) c.classList.add("mon-dead");
   const info = el("div");
+  const skull = mon.dead ? ' <span class="dead-icon">💀</span>' : "";
   const name = hasCustomNick(mon)
     ? `${mon.nickname} <span class="ml">(${mon.species})</span>`
     : mon.species;
-  info.append(el("div", "mn", name + (mon.shiny ? ' <span class="shiny">★</span>' : "")));
+  info.append(el("div", "mn", name + skull + (mon.shiny ? ' <span class="shiny">★</span>' : "")));
 
   const bits = [];
   if (withLevel && mon.level != null) bits.push("Lv " + mon.level);
