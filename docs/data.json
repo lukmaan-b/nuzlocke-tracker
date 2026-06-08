@@ -295,28 +295,28 @@
       "gender": "M",
       "trainerId": 14371,
       "playTime": {
-        "h": 10,
-        "m": 23,
-        "s": 21
+        "h": 15,
+        "m": 24,
+        "s": 5
       },
-      "badges": 5,
+      "badges": 8,
       "badgeList": [
         true,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false
+        true,
+        true,
+        true
       ],
       "location": {
-        "area": "Cinnabar Island",
-        "x": 40.0,
-        "y": 90.0,
+        "area": "Seafoam Islands",
+        "x": 47.0,
+        "y": 88.0,
         "known": true,
-        "mapGroup": 3,
-        "mapNum": 8
+        "mapGroup": 1,
+        "mapNum": 83
       },
       "party": [
         {
@@ -326,24 +326,24 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 117023,
+          "exp": 282153,
           "dead": false,
-          "level": 45,
-          "hp": 201,
-          "maxHp": 201
+          "level": 60,
+          "hp": 268,
+          "maxHp": 268
         },
         {
-          "species": "Pidgeot",
-          "dex": 18,
-          "nickname": "PIDGEOT",
+          "species": "Blastoise",
+          "dex": 9,
+          "nickname": "BLASTOISE",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 73313,
+          "exp": 162588,
           "dead": false,
-          "level": 43,
-          "hp": 137,
-          "maxHp": 137
+          "level": 55,
+          "hp": 0,
+          "maxHp": 164
         },
         {
           "species": "Tangela",
@@ -355,21 +355,21 @@
           "exp": 13824,
           "dead": false,
           "level": 24,
-          "hp": 70,
+          "hp": 0,
           "maxHp": 70
         },
         {
-          "species": "Nidoking",
-          "dex": 34,
-          "nickname": "NIDOKING",
+          "species": "Pidgeot",
+          "dex": 18,
+          "nickname": "PIDGEOT",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 10087,
+          "exp": 101843,
           "dead": false,
-          "level": 23,
-          "hp": 70,
-          "maxHp": 70
+          "level": 47,
+          "hp": 149,
+          "maxHp": 149
         },
         {
           "species": "Raticate",
@@ -381,21 +381,21 @@
           "exp": 23037,
           "dead": false,
           "level": 28,
-          "hp": 74,
+          "hp": 0,
           "maxHp": 74
         },
         {
-          "species": "Wartortle",
-          "dex": 8,
-          "nickname": "WARTORTLE",
+          "species": "Nidoking",
+          "dex": 34,
+          "nickname": "NIDOKING",
           "shiny": false,
           "isEgg": false,
-          "heldItem": null,
-          "exp": 34489,
+          "heldItem": 183,
+          "exp": 49195,
           "dead": false,
-          "level": 34,
-          "hp": 89,
-          "maxHp": 89
+          "level": 38,
+          "hp": 0,
+          "maxHp": 109
         }
       ],
       "boxes": [
@@ -651,9 +651,53 @@
           "exp": 8000,
           "dead": false,
           "box": 1
+        },
+        {
+          "species": "Grimer",
+          "dex": 88,
+          "nickname": "GRIMER",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 21952,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Weezing",
+          "dex": 110,
+          "nickname": "WEEZING",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 32768,
+          "dead": true,
+          "box": 1
+        },
+        {
+          "species": "Hitmonchan",
+          "dex": 107,
+          "nickname": "HITMONCHAN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 15625,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Lapras",
+          "dex": 131,
+          "nickname": "LAPRAS",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 19531,
+          "dead": false,
+          "box": 1
         }
       ],
-      "boxCount": 23
+      "boxCount": 27
     },
     {
       "id": "wes-fire-red",
