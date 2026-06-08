@@ -179,6 +179,69 @@ function openPanel(player) {
   infoSec.append(infoTitle, infoBody);
   body.append(infoSec);
 
+  // -- ELITE FOUR --
+  const e4Sec = el("div", "sum-section");
+  const e4Title = el("div", "sum-section-title");
+  e4Title.textContent = "ELITE FOUR";
+  if (player.e4Beaten) e4Title.classList.add("e4-cleared");
+  e4Sec.append(e4Title);
+
+  if (player.e4Beaten) {
+    const e4Banner = el("div", "e4-banner");
+    const trophy = el("span", "e4-trophy"); trophy.textContent = "🏆";
+    const label = el("span", "e4-label"); label.textContent = "CHAMPION";
+    e4Banner.append(trophy, label);
+    e4Sec.append(e4Banner);
+
+    const e4Body = el("div", "sum-section-body");
+    const ct = player.e4ClearTime;
+    const row = el("div", "kv");
+    const kEl = el("span", "k"); kEl.textContent = "Clear Time";
+    const vEl = el("span", "v");
+    if (ct) {
+      vEl.textContent = `${ct.h}h ${String(ct.m).padStart(2,"0")}m ${String(ct.s).padStart(2,"0")}s`;
+    } else {
+      vEl.textContent = "—";
+    }
+    row.append(kEl, vEl);
+    e4Body.append(row);
+    e4Sec.append(e4Body);
+
+    // Champion team from Hall of Fame
+    if (player.e4HofTeam && player.e4HofTeam.length) {
+      const teamLabel = el("div", "hof-team-label"); teamLabel.textContent = "CHAMPION TEAM";
+      e4Sec.append(teamLabel);
+      const teamGrid = el("div", "hof-team-grid");
+      player.e4HofTeam.forEach(mon => {
+        const card = el("div", "hof-mon");
+        const img = el("img");
+        img.src = spriteUrl(mon.dex);
+        img.alt = mon.species;
+        img.onerror = () => { img.style.visibility = "hidden"; };
+        card.append(img);
+        const info = el("div", "hof-mon-info");
+        const nameEl = el("div", "hof-mon-name");
+        const custom = mon.nickname && mon.nickname.toLowerCase() !== mon.species.toLowerCase();
+        nameEl.textContent = custom ? mon.nickname : mon.species;
+        info.append(nameEl);
+        if (custom) {
+          const sp = el("div", "hof-mon-species"); sp.textContent = mon.species;
+          info.append(sp);
+        }
+        const lvEl = el("div", "hof-mon-lv"); lvEl.textContent = `Lv. ${mon.level}`;
+        info.append(lvEl);
+        card.append(info);
+        teamGrid.append(card);
+      });
+      e4Sec.append(teamGrid);
+    }
+  } else {
+    const notYet = el("div", "e4-not-yet");
+    notYet.textContent = "Not yet cleared";
+    e4Sec.append(notYet);
+  }
+  body.append(e4Sec);
+
   // -- BADGES --
   const badgeSec = el("div", "sum-section");
   const badgeTitle = el("div", "sum-section-title"); badgeTitle.textContent = "GYM BADGES";

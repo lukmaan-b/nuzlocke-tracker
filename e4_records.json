@@ -1,0 +1,15 @@
+{
+  "lukmaan": {
+    "h": 15,
+    "m": 24,
+    "s": 5,
+    "hofTeam": [
+      {"species": "Snorlax",   "dex": 143, "level": 60, "nickname": "Lazy"},
+      {"species": "Blastoise", "dex":   9, "level": 55, "nickname": "BLASTOISE"},
+      {"species": "Tangela",   "dex": 114, "level": 24, "nickname": "TANGENY"},
+      {"species": "Pidgeot",   "dex":  18, "level": 47, "nickname": "PIDGEOT"},
+      {"species": "Raticate",  "dex":  20, "level": 28, "nickname": "RATICATE"},
+      {"species": "Nidoking",  "dex":  34, "level": 38, "nickname": "NIDOKING"}
+    ]
+  }
+}

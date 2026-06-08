@@ -122,6 +122,43 @@ def decode_mon(b, party_format, tid_full):
     return mon
 
 
+def has_hof_entry(data):
+    """Return True if the Hall-of-Fame section (0x1C000) has been written to.
+    An unvisited HOF block is filled with 0xFF; any real entry breaks that pattern."""
+    hof = data[0x1C000:0x1C040] if len(data) >= 0x1C040 else b""
+    return bool(hof) and any(b != 0xFF for b in hof)
+
+
+def read_hof_team(data):
+    """Return the champion team from the first Hall-of-Fame entry, or None.
+
+    HOF mon layout (20 bytes each, 6 mons = 120 bytes at 0x1C000):
+      bytes 0-7  : PID + encrypted fields (not decoded)
+      byte  8    : species index (u8, plain)
+      byte  9    : level << 1  (plain; divide by 2 to get level)
+      bytes 10-19: nickname (10-byte Gen3 string, plain)
+    """
+    if not has_hof_entry(data):
+        return None
+    hof = data[0x1C000 : 0x1C000 + 120]
+    team = []
+    for m in range(6):
+        off = m * 20
+        entry = hof[off : off + 20]
+        species_idx = entry[8]
+        if species_idx == 0 or species_idx > 386:
+            continue
+        level    = entry[9] >> 1
+        nickname = decode_str(entry[10:20])
+        team.append({
+            "species":  gen3data.species_name(species_idx),
+            "dex":      gen3data.species_dex(species_idx),
+            "level":    level,
+            "nickname": nickname,
+        })
+    return team if team else None
+
+
 def parse_save(path):
     with open(path, "rb") as f:
         data = f.read()
@@ -150,6 +187,11 @@ def parse_save(path):
         f = badge0 + i
         bit = (SB1[flags_base + (f >> 3)] >> (f & 7)) & 1
         badge_list.append(bool(bit))
+
+    # Elite Four clear: check Hall-of-Fame section (0x1C000).
+    # More reliable than a flag ID since patched ROMs renumber flags.
+    e4_beaten  = has_hof_entry(data)
+    e4_hof_team = read_hof_team(data)  # champion team at time of first clear
 
     # party
     party = []
@@ -181,6 +223,9 @@ def parse_save(path):
         "playTime": {"h": play_h, "m": play_m, "s": play_s},
         "badges": sum(badge_list),
         "badgeList": badge_list,
+        "e4Beaten": e4_beaten,
+        "e4ClearTime": None,       # filled in by main() via e4_records.json
+        "e4HofTeam": e4_hof_team,  # champion team decoded from HOF section
         "location": location,
         "party": party,
         "boxes": box_flat,
@@ -191,6 +236,14 @@ def parse_save(path):
 def main():
     saves_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "saves")
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "docs", "data.json")
+
+    # Load persisted E4 clear times (captured once, the first time each player clears)
+    records_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "e4_records.json")
+    e4_records = {}
+    if os.path.exists(records_path):
+        with open(records_path, encoding="utf-8") as f:
+            e4_records = json.load(f)
+
     files = sorted(
         glob.glob(os.path.join(saves_dir, "*.sav")) +
         glob.glob(os.path.join(saves_dir, "*.srm"))
@@ -202,11 +255,33 @@ def main():
             players.append(p)
             loc = p["location"]
             note = "" if loc["known"] else "  [!] unmapped location, add to gen3data.LOCATIONS"
+            e4_note = "  [E4 CLEARED]" if p["e4Beaten"] else ""
             print(f"  {p['id']:12s} '{p['trainer']}'  badges={p['badges']}  "
                   f"party={len(p['party'])}  box={p['boxCount']}  "
-                  f"@ {loc['area']} (g{loc['mapGroup']}.{loc['mapNum']}){note}")
+                  f"@ {loc['area']} (g{loc['mapGroup']}.{loc['mapNum']}){note}{e4_note}")
         except Exception as e:
             print(f"  [ERROR] {path}: {e}")
+
+    # Snapshot E4 clear time the first time each player triggers the flag
+    records_updated = False
+    for p in players:
+        pid = p["id"]
+        if p["e4Beaten"] and pid not in e4_records:
+            pt = p["playTime"]
+            e4_records[pid] = {
+                "h": pt["h"], "m": pt["m"], "s": pt["s"],
+                "hofTeam": p["e4HofTeam"],
+            }
+            records_updated = True
+            print(f"  *** First E4 clear for '{p['trainer']}' recorded at "
+                  f"{pt['h']}h {pt['m']:02d}m {pt['s']:02d}s ***")
+        # Attach the persisted clear time (None if not yet cleared)
+        p["e4ClearTime"] = e4_records.get(pid)
+
+    if records_updated:
+        with open(records_path, "w", encoding="utf-8") as f:
+            json.dump(e4_records, f, indent=2, ensure_ascii=False)
+
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         json.dump({"players": players}, f, indent=2, ensure_ascii=False)

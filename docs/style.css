@@ -457,6 +457,120 @@ body {
   color: var(--sys-red);
 }
 
+.sum-section-title.e4-cleared {
+  color: var(--sys-yellow);
+}
+
+/* Champion banner */
+.e4-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 8px;
+}
+
+.e4-trophy {
+  font-size: 28px;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(255, 214, 10, 0.6));
+}
+
+.e4-label {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--sys-yellow);
+  text-shadow: 0 0 20px rgba(255, 214, 10, 0.45);
+}
+
+.e4-not-yet {
+  font-size: 13px;
+  color: var(--text-quaternary);
+  padding: 12px 14px 14px;
+  font-style: italic;
+}
+
+/* HOF champion team */
+.hof-team-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: var(--text-tertiary);
+  padding: 10px 14px 4px;
+  text-transform: uppercase;
+}
+
+.hof-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 0 10px 12px;
+}
+
+.hof-mon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 4px 8px;
+  background: var(--glass-ultra-thin);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-md);
+  text-align: center;
+  transition: background 120ms var(--ease-out);
+}
+
+.hof-mon:hover {
+  background: var(--glass-thin);
+}
+
+.hof-mon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45));
+}
+
+.hof-mon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  width: 100%;
+}
+
+.hof-mon-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 0 2px;
+}
+
+.hof-mon-species {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 0 2px;
+}
+
+.hof-mon-lv {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--sys-yellow);
+  letter-spacing: 0.03em;
+}
+
 .sum-section-body { padding: 0; }
 
 /* Key-value rows */
