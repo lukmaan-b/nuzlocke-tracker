@@ -790,9 +790,9 @@
       "gender": "M",
       "trainerId": 38869,
       "playTime": {
-        "h": 4,
-        "m": 47,
-        "s": 28
+        "h": 5,
+        "m": 9,
+        "s": 12
       },
       "badges": 3,
       "badgeList": [
@@ -809,12 +809,12 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Seafoam Islands",
-        "x": 43.0,
-        "y": 82.0,
+        "area": "Lavender Town",
+        "x": 72.0,
+        "y": 46.0,
         "known": true,
-        "mapGroup": 1,
-        "mapNum": 84
+        "mapGroup": 8,
+        "mapNum": 0
       },
       "party": [
         {
@@ -824,11 +824,11 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 32004,
+          "exp": 42988,
           "dead": false,
-          "level": 33,
-          "hp": 106,
-          "maxHp": 106
+          "level": 36,
+          "hp": 115,
+          "maxHp": 115
         },
         {
           "species": "Charmeleon",
@@ -837,11 +837,11 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 31087,
+          "exp": 33343,
           "dead": false,
-          "level": 33,
-          "hp": 83,
-          "maxHp": 83
+          "level": 34,
+          "hp": 85,
+          "maxHp": 85
         },
         {
           "species": "Rattata",
