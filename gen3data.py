@@ -90,18 +90,18 @@ def species_dex(idx):
 # so they can be added as players explore.
 # Coordinates (x%, y%) of each named area on the in-game FRLG Town Map image.
 AREA_COORDS = {
-    # towns / cities
-    "Pallet Town": (23, 89), "Viridian City": (23, 73), "Pewter City": (23, 31),
-    "Cerulean City": (65, 29), "Lavender Town": (80, 47), "Vermilion City": (65, 60),
-    "Celadon City": (53, 47), "Fuchsia City": (57, 80), "Cinnabar Island": (40, 90),
-    "Indigo Plateau": (15, 29), "Saffron City": (65, 47),
+    # towns / cities  -- calibrated to the in-game FRLG Town Map (383×287)
+    "Pallet Town":    (22, 87), "Viridian City":  (22, 72), "Pewter City":    (22, 33),
+    "Cerulean City":  (58, 28), "Lavender Town":  (72, 46), "Vermilion City": (62, 63),
+    "Celadon City":   (48, 46), "Fuchsia City":   (43, 76), "Cinnabar Island":(17, 90),
+    "Indigo Plateau": (13, 28), "Saffron City":   (62, 46),
     # dungeons / landmarks
-    "Viridian Forest": (24, 60), "Mt. Moon": (40, 29), "S.S. Anne": (63, 63),
-    "Underground Path": (59, 47), "Diglett's Cave": (49, 31), "Victory Road": (14, 37),
-    "Rocket Hideout": (53, 47), "Silph Co.": (65, 47), "Pokemon Mansion": (40, 90),
-    "Safari Zone": (55, 75), "Cerulean Cave": (62, 25), "Rock Tunnel": (78, 37),
-    "Seafoam Islands": (47, 88), "Pokemon Tower": (80, 45), "Power Plant": (83, 40),
-    # Sevii Islands (off the Kanto map -- shown along the right/SE edge)
+    "Viridian Forest": (22, 62), "Mt. Moon":      (33, 30), "S.S. Anne":      (62, 63),
+    "Underground Path":(57, 46), "Diglett's Cave": (38, 43), "Victory Road":  (13, 35),
+    "Rocket Hideout":  (48, 46), "Silph Co.":     (62, 46), "Pokemon Mansion":(17, 90),
+    "Safari Zone":     (38, 72), "Cerulean Cave":  (58, 22), "Rock Tunnel":   (68, 37),
+    "Seafoam Islands": (43, 82), "Pokemon Tower":  (72, 46), "Power Plant":   (72, 37),
+    # Sevii Islands
     "One Island": (88, 88), "Two Island": (90, 84), "Three Island": (92, 79),
     "Four Island": (88, 71), "Five Island": (90, 65), "Six Island": (92, 59),
     "Seven Island": (88, 54),
@@ -109,11 +109,11 @@ AREA_COORDS = {
 
 # Coordinates for the numbered Kanto routes.
 ROUTE_COORDS = {
-    1: (23, 81), 2: (23, 52), 3: (33, 30), 4: (48, 30), 5: (65, 38), 6: (65, 54),
-    7: (60, 47), 8: (72, 47), 9: (75, 33), 10: (80, 38), 11: (72, 61), 12: (81, 56),
-    13: (78, 66), 14: (71, 72), 15: (65, 75), 16: (45, 50), 17: (42, 64), 18: (48, 80),
-    19: (57, 86), 20: (47, 89), 21: (31, 89), 22: (12, 72), 23: (13, 44), 24: (65, 21),
-    25: (70, 18),
+    1: (22, 81),  2: (22, 52),  3: (33, 30),  4: (48, 30),  5: (57, 38),  6: (62, 54),
+    7: (57, 46),  8: (72, 46),  9: (68, 33), 10: (72, 37), 11: (62, 63), 12: (72, 56),
+    13:(68, 66), 14: (62, 72), 15: (57, 75), 16: (38, 50), 17: (38, 64), 18: (43, 80),
+    19:(43, 87), 20: (43, 82), 21: (31, 87), 22: (13, 72), 23: (13, 44), 24: (58, 21),
+    25: (65, 18),
 }
 
 # Substring rules checked (in order) against the in-game map name.
