@@ -187,24 +187,25 @@ function openPanel(player) {
   e4Sec.append(e4Title);
 
   if (player.e4Beaten) {
-    const e4Banner = el("div", "e4-banner");
-    const trophy = el("span", "e4-trophy"); trophy.textContent = "🏆";
-    const label = el("span", "e4-label"); label.textContent = "CHAMPION";
-    e4Banner.append(trophy, label);
-    e4Sec.append(e4Banner);
-
     const e4Body = el("div", "sum-section-body");
+
+    // Status row
+    const statusRow = el("div", "kv");
+    const skEl = el("span", "k"); skEl.textContent = "Status";
+    const svEl = el("span", "v e4-status-val"); svEl.textContent = "Champion";
+    statusRow.append(skEl, svEl);
+    e4Body.append(statusRow);
+
+    // Clear time row
     const ct = player.e4ClearTime;
-    const row = el("div", "kv");
+    const timeRow = el("div", "kv");
     const kEl = el("span", "k"); kEl.textContent = "Clear Time";
     const vEl = el("span", "v");
-    if (ct) {
-      vEl.textContent = `${ct.h}h ${String(ct.m).padStart(2,"0")}m ${String(ct.s).padStart(2,"0")}s`;
-    } else {
-      vEl.textContent = "—";
-    }
-    row.append(kEl, vEl);
-    e4Body.append(row);
+    vEl.textContent = ct
+      ? `${ct.h}h ${String(ct.m).padStart(2,"0")}m ${String(ct.s).padStart(2,"0")}s`
+      : "—";
+    timeRow.append(kEl, vEl);
+    e4Body.append(timeRow);
     e4Sec.append(e4Body);
 
     // Champion team from Hall of Fame
