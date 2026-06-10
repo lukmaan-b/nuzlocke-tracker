@@ -7,12 +7,12 @@
       "trainerId": 17801,
       "playTime": {
         "h": 0,
-        "m": 2,
-        "s": 21
+        "m": 54,
+        "s": 15
       },
-      "badges": 0,
+      "badges": 1,
       "badgeList": [
-        false,
+        true,
         false,
         false,
         false,
@@ -25,26 +25,65 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Pallet Town",
-        "x": 22.0,
-        "y": 87.0,
+        "area": "Cerulean City",
+        "x": 58.0,
+        "y": 28.0,
         "known": true,
-        "mapGroup": 4,
+        "mapGroup": 7,
         "mapNum": 3
       },
       "party": [
         {
-          "species": "Bulbasaur",
-          "dex": 1,
-          "nickname": "BULBASAUR",
+          "species": "Nidorino",
+          "dex": 33,
+          "nickname": "Big D",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 204,
+          "exp": 9927,
           "dead": false,
-          "level": 6,
-          "hp": 22,
-          "maxHp": 22
+          "level": 23,
+          "hp": 61,
+          "maxHp": 61
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 57,
+          "dead": false,
+          "level": 3,
+          "hp": 15,
+          "maxHp": 15
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 27,
+          "dead": false,
+          "level": 3,
+          "hp": 15,
+          "maxHp": 15
+        },
+        {
+          "species": "Ivysaur",
+          "dex": 2,
+          "nickname": "IVYSAUR",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 8415,
+          "dead": false,
+          "level": 22,
+          "hp": 61,
+          "maxHp": 61
         }
       ],
       "boxes": [],
