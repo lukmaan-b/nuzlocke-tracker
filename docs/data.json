@@ -790,18 +790,18 @@
       "gender": "M",
       "trainerId": 38869,
       "playTime": {
-        "h": 7,
-        "m": 24,
-        "s": 50
+        "h": 10,
+        "m": 38,
+        "s": 0
       },
-      "badges": 4,
+      "badges": 6,
       "badgeList": [
         true,
         true,
         true,
         true,
-        false,
-        false,
+        true,
+        true,
         false,
         false
       ],
@@ -809,26 +809,39 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "One Island",
-        "x": 88.0,
-        "y": 88.0,
+        "area": "Route 20",
+        "x": 43.0,
+        "y": 82.0,
         "known": true,
-        "mapGroup": 1,
-        "mapNum": 97
+        "mapGroup": 3,
+        "mapNum": 38
       },
       "party": [
         {
-          "species": "Charizard",
-          "dex": 6,
-          "nickname": "CHARGRILL",
+          "species": "Lapras",
+          "dex": 131,
+          "nickname": "Faketurtle",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 61219,
+          "exp": 49653,
           "dead": false,
-          "level": 40,
-          "hp": 116,
-          "maxHp": 116
+          "level": 34,
+          "hp": 117,
+          "maxHp": 136
+        },
+        {
+          "species": "Jolteon",
+          "dex": 135,
+          "nickname": "Peepee",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 108695,
+          "dead": false,
+          "level": 47,
+          "hp": 131,
+          "maxHp": 131
         },
         {
           "species": "Nidoking",
@@ -837,24 +850,24 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 54587,
+          "exp": 105573,
           "dead": false,
-          "level": 39,
-          "hp": 125,
-          "maxHp": 125
+          "level": 48,
+          "hp": 154,
+          "maxHp": 154
         },
         {
-          "species": "Geodude",
-          "dex": 74,
-          "nickname": "Leggy",
+          "species": "Charizard",
+          "dex": 6,
+          "nickname": "CHARGRILL",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 2535,
+          "exp": 75388,
           "dead": false,
-          "level": 16,
-          "hp": 42,
-          "maxHp": 42
+          "level": 43,
+          "hp": 124,
+          "maxHp": 124
         },
         {
           "species": "Rattata",
@@ -870,30 +883,17 @@
           "maxHp": 13
         },
         {
-          "species": "Jolteon",
-          "dex": 135,
-          "nickname": "Peepee",
+          "species": "Geodude",
+          "dex": 74,
+          "nickname": "Leggy",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 33224,
+          "exp": 2535,
           "dead": false,
-          "level": 32,
-          "hp": 91,
-          "maxHp": 91
-        },
-        {
-          "species": "Gastly",
-          "dex": 92,
-          "nickname": "Gas",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2035,
-          "dead": false,
-          "level": 15,
-          "hp": 34,
-          "maxHp": 34
+          "level": 16,
+          "hp": 42,
+          "maxHp": 42
         }
       ],
       "boxes": [
@@ -984,9 +984,64 @@
           "exp": 419,
           "dead": true,
           "box": 1
+        },
+        {
+          "species": "Snorlax",
+          "dex": 143,
+          "nickname": "Thicc",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 33750,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Doduo",
+          "dex": 84,
+          "nickname": "DODUO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 17576,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Rhyhorn",
+          "dex": 111,
+          "nickname": "RHYHORN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 21970,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Gastly",
+          "dex": 92,
+          "nickname": "Gas",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 2035,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Tentacool",
+          "dex": 72,
+          "nickname": "TENTACOOL",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 6141,
+          "dead": false,
+          "box": 1
         }
       ],
-      "boxCount": 8
+      "boxCount": 13
     }
   ]
 }
