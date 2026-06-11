@@ -6,16 +6,16 @@
       "gender": "M",
       "trainerId": 17801,
       "playTime": {
-        "h": 0,
-        "m": 54,
-        "s": 15
+        "h": 1,
+        "m": 49,
+        "s": 0
       },
-      "badges": 1,
+      "badges": 4,
       "badgeList": [
         true,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
         false,
         false,
         false,
@@ -25,26 +25,26 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Cerulean City",
-        "x": 58.0,
-        "y": 28.0,
+        "area": "Celadon City",
+        "x": 48.0,
+        "y": 46.0,
         "known": true,
-        "mapGroup": 7,
-        "mapNum": 3
+        "mapGroup": 3,
+        "mapNum": 6
       },
       "party": [
         {
-          "species": "Nidorino",
-          "dex": 33,
+          "species": "Nidoking",
+          "dex": 34,
           "nickname": "Big D",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 9927,
+          "exp": 85767,
           "dead": false,
-          "level": 23,
-          "hp": 61,
-          "maxHp": 61
+          "level": 45,
+          "hp": 129,
+          "maxHp": 129
         },
         {
           "species": "Pidgey",
@@ -79,10 +79,10 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 8415,
+          "exp": 8775,
           "dead": false,
           "level": 22,
-          "hp": 61,
+          "hp": 0,
           "maxHp": 61
         }
       ],
