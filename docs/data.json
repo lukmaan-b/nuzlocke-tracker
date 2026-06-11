@@ -587,11 +587,11 @@
       "gender": "M",
       "trainerId": 38869,
       "playTime": {
-        "h": 10,
-        "m": 38,
-        "s": 0
+        "h": 11,
+        "m": 29,
+        "s": 42
       },
-      "badges": 6,
+      "badges": 7,
       "badgeList": [
         true,
         true,
@@ -599,19 +599,19 @@
         true,
         true,
         true,
-        false,
+        true,
         false
       ],
       "e4Beaten": false,
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Route 20",
-        "x": 43.0,
-        "y": 82.0,
+        "area": "Viridian City",
+        "x": 22.0,
+        "y": 72.0,
         "known": true,
         "mapGroup": 3,
-        "mapNum": 38
+        "mapNum": 1
       },
       "party": [
         {
@@ -621,37 +621,11 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 49653,
+          "exp": 83064,
           "dead": false,
-          "level": 34,
-          "hp": 117,
-          "maxHp": 136
-        },
-        {
-          "species": "Jolteon",
-          "dex": 135,
-          "nickname": "Peepee",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 108695,
-          "dead": false,
-          "level": 47,
-          "hp": 131,
-          "maxHp": 131
-        },
-        {
-          "species": "Nidoking",
-          "dex": 34,
-          "nickname": "NIDOKING",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 105573,
-          "dead": false,
-          "level": 48,
-          "hp": 154,
-          "maxHp": 154
+          "level": 40,
+          "hp": 158,
+          "maxHp": 158
         },
         {
           "species": "Charizard",
@@ -660,11 +634,37 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 75388,
+          "exp": 80065,
           "dead": false,
-          "level": 43,
-          "hp": 124,
-          "maxHp": 124
+          "level": 44,
+          "hp": 127,
+          "maxHp": 127
+        },
+        {
+          "species": "Nidoking",
+          "dex": 34,
+          "nickname": "NIDOKING",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 108373,
+          "dead": false,
+          "level": 48,
+          "hp": 154,
+          "maxHp": 154
+        },
+        {
+          "species": "Jolteon",
+          "dex": 135,
+          "nickname": "Peepee",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 111304,
+          "dead": false,
+          "level": 48,
+          "hp": 133,
+          "maxHp": 133
         },
         {
           "species": "Rattata",
@@ -836,9 +836,20 @@
           "exp": 6141,
           "dead": false,
           "box": 1
+        },
+        {
+          "species": "Growlithe",
+          "dex": 58,
+          "nickname": "GROWLITHE",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 40960,
+          "dead": false,
+          "box": 1
         }
       ],
-      "boxCount": 13
+      "boxCount": 14
     }
   ]
 }
