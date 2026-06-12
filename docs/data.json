@@ -7,16 +7,16 @@
       "trainerId": 17801,
       "playTime": {
         "h": 2,
-        "m": 4,
-        "s": 26
+        "m": 16,
+        "s": 58
       },
-      "badges": 4,
+      "badges": 5,
       "badgeList": [
         true,
         true,
         true,
         true,
-        false,
+        true,
         false,
         false,
         false
@@ -25,12 +25,12 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Route 11",
-        "x": 62.0,
-        "y": 63.0,
+        "area": "Fuchsia City",
+        "x": 43.0,
+        "y": 76.0,
         "known": true,
-        "mapGroup": 22,
-        "mapNum": 0
+        "mapGroup": 11,
+        "mapNum": 5
       },
       "party": [
         {
@@ -40,11 +40,11 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 104256,
+          "exp": 130234,
           "dead": false,
-          "level": 48,
-          "hp": 115,
-          "maxHp": 138
+          "level": 51,
+          "hp": 146,
+          "maxHp": 146
         },
         {
           "species": "Pidgey",
