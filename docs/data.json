@@ -1,14 +1,14 @@
 {
   "players": [
     {
-      "id": "Pokemon - FireRed Version (USA) (patched)",
+      "id": "1Pokemon - FireRed Version (USA) (patched)",
       "trainer": "Assboi2",
       "gender": "M",
       "trainerId": 17801,
       "playTime": {
         "h": 2,
-        "m": 16,
-        "s": 58
+        "m": 24,
+        "s": 31
       },
       "badges": 5,
       "badgeList": [
@@ -29,8 +29,8 @@
         "x": 43.0,
         "y": 76.0,
         "known": true,
-        "mapGroup": 11,
-        "mapNum": 5
+        "mapGroup": 3,
+        "mapNum": 7
       },
       "party": [
         {
@@ -84,10 +84,163 @@
           "level": 22,
           "hp": 0,
           "maxHp": 61
+        },
+        {
+          "species": "Nidoran-M",
+          "dex": 32,
+          "nickname": "NIDORAN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 21760,
+          "dead": false,
+          "level": 30,
+          "hp": 0,
+          "maxHp": 71
+        },
+        {
+          "species": "Doduo",
+          "dex": 84,
+          "nickname": "DODUO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 17576,
+          "dead": false,
+          "level": 26,
+          "hp": 57,
+          "maxHp": 57
         }
       ],
       "boxes": [],
       "boxCount": 0
+    },
+    {
+      "id": "Pokemon - FireRed Version (USA) (patched)",
+      "trainer": "Assboi2",
+      "gender": "M",
+      "trainerId": 17801,
+      "playTime": {
+        "h": 2,
+        "m": 58,
+        "s": 12
+      },
+      "badges": 8,
+      "badgeList": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "e4Beaten": false,
+      "e4ClearTime": null,
+      "e4HofTeam": null,
+      "location": {
+        "area": "Viridian City",
+        "x": 22.0,
+        "y": 72.0,
+        "known": true,
+        "mapGroup": 5,
+        "mapNum": 1
+      },
+      "party": [
+        {
+          "species": "Nidoking",
+          "dex": 34,
+          "nickname": "Big D",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": 190,
+          "exp": 221648,
+          "dead": false,
+          "level": 60,
+          "hp": 223,
+          "maxHp": 223
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "nickname": "PIDGEY",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 57,
+          "dead": false,
+          "level": 3,
+          "hp": 15,
+          "maxHp": 15
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "nickname": "RATTATA",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 27,
+          "dead": false,
+          "level": 3,
+          "hp": 15,
+          "maxHp": 15
+        },
+        {
+          "species": "Ivysaur",
+          "dex": 2,
+          "nickname": "IVYSAUR",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 8775,
+          "dead": false,
+          "level": 22,
+          "hp": 0,
+          "maxHp": 61
+        },
+        {
+          "species": "Nidoran-M",
+          "dex": 32,
+          "nickname": "NIDORAN",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 21760,
+          "dead": false,
+          "level": 30,
+          "hp": 0,
+          "maxHp": 71
+        },
+        {
+          "species": "Doduo",
+          "dex": 84,
+          "nickname": "DODUO",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 17576,
+          "dead": false,
+          "level": 26,
+          "hp": 57,
+          "maxHp": 57
+        }
+      ],
+      "boxes": [
+        {
+          "species": "Lapras",
+          "dex": 131,
+          "nickname": "LAPRAS",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 19531,
+          "dead": false,
+          "box": 1
+        }
+      ],
+      "boxCount": 1
     },
     {
       "id": "lukmaan",
