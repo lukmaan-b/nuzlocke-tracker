@@ -1,121 +1,6 @@
 {
   "players": [
     {
-      "id": "1Pokemon - FireRed Version (USA) (patched)",
-      "trainer": "Assboi2",
-      "gender": "M",
-      "trainerId": 17801,
-      "playTime": {
-        "h": 2,
-        "m": 24,
-        "s": 31
-      },
-      "badges": 5,
-      "badgeList": [
-        true,
-        true,
-        true,
-        true,
-        true,
-        false,
-        false,
-        false
-      ],
-      "e4Beaten": false,
-      "e4ClearTime": null,
-      "e4HofTeam": null,
-      "location": {
-        "area": "Fuchsia City",
-        "x": 43.0,
-        "y": 76.0,
-        "known": true,
-        "mapGroup": 3,
-        "mapNum": 7
-      },
-      "party": [
-        {
-          "species": "Nidoking",
-          "dex": 34,
-          "nickname": "Big D",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 130234,
-          "dead": false,
-          "level": 51,
-          "hp": 146,
-          "maxHp": 146
-        },
-        {
-          "species": "Pidgey",
-          "dex": 16,
-          "nickname": "PIDGEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 57,
-          "dead": false,
-          "level": 3,
-          "hp": 15,
-          "maxHp": 15
-        },
-        {
-          "species": "Rattata",
-          "dex": 19,
-          "nickname": "RATTATA",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 27,
-          "dead": false,
-          "level": 3,
-          "hp": 15,
-          "maxHp": 15
-        },
-        {
-          "species": "Ivysaur",
-          "dex": 2,
-          "nickname": "IVYSAUR",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 8775,
-          "dead": false,
-          "level": 22,
-          "hp": 0,
-          "maxHp": 61
-        },
-        {
-          "species": "Nidoran-M",
-          "dex": 32,
-          "nickname": "NIDORAN",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 21760,
-          "dead": false,
-          "level": 30,
-          "hp": 0,
-          "maxHp": 71
-        },
-        {
-          "species": "Doduo",
-          "dex": 84,
-          "nickname": "DODUO",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 17576,
-          "dead": false,
-          "level": 26,
-          "hp": 57,
-          "maxHp": 57
-        }
-      ],
-      "boxes": [],
-      "boxCount": 0
-    },
-    {
       "id": "Pokemon - FireRed Version (USA) (patched)",
       "trainer": "Assboi2",
       "gender": "M",
@@ -740,11 +625,11 @@
       "gender": "M",
       "trainerId": 38869,
       "playTime": {
-        "h": 11,
-        "m": 29,
-        "s": 42
+        "h": 14,
+        "m": 37,
+        "s": 1
       },
-      "badges": 7,
+      "badges": 8,
       "badgeList": [
         true,
         true,
@@ -753,45 +638,32 @@
         true,
         true,
         true,
-        false
+        true
       ],
       "e4Beaten": false,
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Viridian City",
-        "x": 22.0,
-        "y": 72.0,
+        "area": "One Island",
+        "x": 88.0,
+        "y": 88.0,
         "known": true,
         "mapGroup": 3,
-        "mapNum": 1
+        "mapNum": 45
       },
       "party": [
         {
-          "species": "Lapras",
-          "dex": 131,
-          "nickname": "Faketurtle",
+          "species": "Jolteon",
+          "dex": 135,
+          "nickname": "Peepee",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 83064,
+          "exp": 167971,
           "dead": false,
-          "level": 40,
-          "hp": 158,
-          "maxHp": 158
-        },
-        {
-          "species": "Charizard",
-          "dex": 6,
-          "nickname": "CHARGRILL",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 80065,
-          "dead": false,
-          "level": 44,
-          "hp": 127,
-          "maxHp": 127
+          "level": 55,
+          "hp": 153,
+          "maxHp": 153
         },
         {
           "species": "Nidoking",
@@ -800,24 +672,37 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 108373,
+          "exp": 159683,
           "dead": false,
-          "level": 48,
-          "hp": 154,
-          "maxHp": 154
+          "level": 55,
+          "hp": 175,
+          "maxHp": 175
         },
         {
-          "species": "Jolteon",
-          "dex": 135,
-          "nickname": "Peepee",
+          "species": "Charizard",
+          "dex": 6,
+          "nickname": "CHARGRILL",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 111304,
+          "exp": 159773,
           "dead": false,
-          "level": 48,
-          "hp": 133,
-          "maxHp": 133
+          "level": 55,
+          "hp": 156,
+          "maxHp": 156
+        },
+        {
+          "species": "Lapras",
+          "dex": 131,
+          "nickname": "Faketurtle",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 210310,
+          "dead": false,
+          "level": 55,
+          "hp": 215,
+          "maxHp": 215
         },
         {
           "species": "Rattata",
@@ -1000,9 +885,20 @@
           "exp": 40960,
           "dead": false,
           "box": 1
+        },
+        {
+          "species": "Marowak",
+          "dex": 105,
+          "nickname": "Twocoins",
+          "shiny": false,
+          "isEgg": false,
+          "heldItem": null,
+          "exp": 85184,
+          "dead": false,
+          "box": 1
         }
       ],
-      "boxCount": 14
+      "boxCount": 15
     }
   ]
 }
