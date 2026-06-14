@@ -6,9 +6,9 @@
       "gender": "M",
       "trainerId": 17801,
       "playTime": {
-        "h": 2,
-        "m": 58,
-        "s": 12
+        "h": 4,
+        "m": 5,
+        "s": 46
       },
       "badges": 8,
       "badgeList": [
@@ -21,16 +21,95 @@
         true,
         true
       ],
-      "e4Beaten": false,
-      "e4ClearTime": null,
-      "e4HofTeam": null,
+      "e4Beaten": true,
+      "e4ClearTime": {
+        "h": 4,
+        "m": 5,
+        "s": 46,
+        "hofTeam": [
+          {
+            "species": "Nidoking",
+            "dex": 34,
+            "level": 69,
+            "nickname": "Big D"
+          },
+          {
+            "species": "Pidgey",
+            "dex": 16,
+            "level": 3,
+            "nickname": "PIDGEY"
+          },
+          {
+            "species": "Rattata",
+            "dex": 19,
+            "level": 3,
+            "nickname": "RATTATA"
+          },
+          {
+            "species": "Ivysaur",
+            "dex": 2,
+            "level": 22,
+            "nickname": "IVYSAUR"
+          },
+          {
+            "species": "Nidoran-M",
+            "dex": 32,
+            "level": 30,
+            "nickname": "NIDORAN"
+          },
+          {
+            "species": "Doduo",
+            "dex": 84,
+            "level": 26,
+            "nickname": "DODUO"
+          }
+        ]
+      },
+      "e4HofTeam": [
+        {
+          "species": "Nidoking",
+          "dex": 34,
+          "level": 69,
+          "nickname": "Big D"
+        },
+        {
+          "species": "Pidgey",
+          "dex": 16,
+          "level": 3,
+          "nickname": "PIDGEY"
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "level": 3,
+          "nickname": "RATTATA"
+        },
+        {
+          "species": "Ivysaur",
+          "dex": 2,
+          "level": 22,
+          "nickname": "IVYSAUR"
+        },
+        {
+          "species": "Nidoran-M",
+          "dex": 32,
+          "level": 30,
+          "nickname": "NIDORAN"
+        },
+        {
+          "species": "Doduo",
+          "dex": 84,
+          "level": 26,
+          "nickname": "DODUO"
+        }
+      ],
       "location": {
-        "area": "Viridian City",
+        "area": "Pallet Town",
         "x": 22.0,
-        "y": 72.0,
+        "y": 87.0,
         "known": true,
-        "mapGroup": 5,
-        "mapNum": 1
+        "mapGroup": 4,
+        "mapNum": 3
       },
       "party": [
         {
@@ -39,12 +118,12 @@
           "nickname": "Big D",
           "shiny": false,
           "isEgg": false,
-          "heldItem": 190,
-          "exp": 221648,
+          "heldItem": 183,
+          "exp": 344873,
           "dead": false,
-          "level": 60,
-          "hp": 223,
-          "maxHp": 223
+          "level": 69,
+          "hp": 255,
+          "maxHp": 255
         },
         {
           "species": "Pidgey",
