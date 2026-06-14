@@ -704,9 +704,9 @@
       "gender": "M",
       "trainerId": 38869,
       "playTime": {
-        "h": 14,
-        "m": 37,
-        "s": 1
+        "h": 15,
+        "m": 25,
+        "s": 54
       },
       "badges": 8,
       "badgeList": [
@@ -719,30 +719,109 @@
         true,
         true
       ],
-      "e4Beaten": false,
-      "e4ClearTime": null,
-      "e4HofTeam": null,
-      "location": {
-        "area": "One Island",
-        "x": 88.0,
-        "y": 88.0,
-        "known": true,
-        "mapGroup": 3,
-        "mapNum": 45
+      "e4Beaten": true,
+      "e4ClearTime": {
+        "h": 15,
+        "m": 25,
+        "s": 54,
+        "hofTeam": [
+          {
+            "species": "Lapras",
+            "dex": 131,
+            "level": 65,
+            "nickname": "Faketurtle"
+          },
+          {
+            "species": "Nidoking",
+            "dex": 34,
+            "level": 55,
+            "nickname": "NIDOKING"
+          },
+          {
+            "species": "Charizard",
+            "dex": 6,
+            "level": 55,
+            "nickname": "CHARGRILL"
+          },
+          {
+            "species": "Jolteon",
+            "dex": 135,
+            "level": 56,
+            "nickname": "Peepee"
+          },
+          {
+            "species": "Rattata",
+            "dex": 19,
+            "level": 2,
+            "nickname": "RATTATA"
+          },
+          {
+            "species": "Geodude",
+            "dex": 74,
+            "level": 16,
+            "nickname": "Leggy"
+          }
+        ]
       },
-      "party": [
+      "e4HofTeam": [
+        {
+          "species": "Lapras",
+          "dex": 131,
+          "level": 65,
+          "nickname": "Faketurtle"
+        },
+        {
+          "species": "Nidoking",
+          "dex": 34,
+          "level": 55,
+          "nickname": "NIDOKING"
+        },
+        {
+          "species": "Charizard",
+          "dex": 6,
+          "level": 55,
+          "nickname": "CHARGRILL"
+        },
         {
           "species": "Jolteon",
           "dex": 135,
-          "nickname": "Peepee",
+          "level": 56,
+          "nickname": "Peepee"
+        },
+        {
+          "species": "Rattata",
+          "dex": 19,
+          "level": 2,
+          "nickname": "RATTATA"
+        },
+        {
+          "species": "Geodude",
+          "dex": 74,
+          "level": 16,
+          "nickname": "Leggy"
+        }
+      ],
+      "location": {
+        "area": "Seafoam Islands",
+        "x": 43.0,
+        "y": 82.0,
+        "known": true,
+        "mapGroup": 1,
+        "mapNum": 83
+      },
+      "party": [
+        {
+          "species": "Lapras",
+          "dex": 131,
+          "nickname": "Faketurtle",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 167971,
+          "exp": 346615,
           "dead": false,
-          "level": 55,
-          "hp": 153,
-          "maxHp": 153
+          "level": 65,
+          "hp": 254,
+          "maxHp": 254
         },
         {
           "species": "Nidoking",
@@ -751,7 +830,7 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 159683,
+          "exp": 161447,
           "dead": false,
           "level": 55,
           "hp": 175,
@@ -764,24 +843,24 @@
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 159773,
+          "exp": 167137,
           "dead": false,
           "level": 55,
           "hp": 156,
           "maxHp": 156
         },
         {
-          "species": "Lapras",
-          "dex": 131,
-          "nickname": "Faketurtle",
+          "species": "Jolteon",
+          "dex": 135,
+          "nickname": "Peepee",
           "shiny": false,
           "isEgg": false,
           "heldItem": null,
-          "exp": 210310,
+          "exp": 183083,
           "dead": false,
-          "level": 55,
-          "hp": 215,
-          "maxHp": 215
+          "level": 56,
+          "hp": 155,
+          "maxHp": 155
         },
         {
           "species": "Rattata",
