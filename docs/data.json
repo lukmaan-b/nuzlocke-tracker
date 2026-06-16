@@ -1,6 +1,42 @@
 {
   "players": [
     {
+      "id": "Pokemon - Emerald Version (USA, Europe) (patched)",
+      "trainer": "AssBoii",
+      "gender": "M",
+      "trainerId": 23918,
+      "playTime": {
+        "h": 0,
+        "m": 0,
+        "s": 15
+      },
+      "badges": 0,
+      "badgeList": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "e4Beaten": false,
+      "e4ClearTime": null,
+      "e4HofTeam": null,
+      "location": {
+        "area": "S.S. Anne",
+        "x": 62.0,
+        "y": 63.0,
+        "known": true,
+        "mapGroup": 1,
+        "mapNum": 4
+      },
+      "party": [],
+      "boxes": [],
+      "boxCount": 0
+    },
+    {
       "id": "Pokemon - FireRed Version (USA) (patched)",
       "trainer": "Assboi2",
       "gender": "M",
@@ -208,24 +244,24 @@
     },
     {
       "id": "lukmaan",
-      "trainer": "Red",
+      "trainer": "lolmon",
       "gender": "M",
-      "trainerId": 14371,
+      "trainerId": 59359,
       "playTime": {
-        "h": 15,
-        "m": 24,
+        "h": 0,
+        "m": 0,
         "s": 5
       },
-      "badges": 8,
+      "badges": 0,
       "badgeList": [
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
       ],
       "e4Beaten": true,
       "e4ClearTime": {
@@ -271,432 +307,18 @@
           }
         ]
       },
-      "e4HofTeam": [
-        {
-          "species": "Snorlax",
-          "dex": 143,
-          "level": 60,
-          "nickname": "Lazy"
-        },
-        {
-          "species": "Blastoise",
-          "dex": 9,
-          "level": 55,
-          "nickname": "BLASTOISE"
-        },
-        {
-          "species": "Tangela",
-          "dex": 114,
-          "level": 24,
-          "nickname": "TANGENY"
-        },
-        {
-          "species": "Pidgeot",
-          "dex": 18,
-          "level": 47,
-          "nickname": "PIDGEOT"
-        },
-        {
-          "species": "Raticate",
-          "dex": 20,
-          "level": 28,
-          "nickname": "RATICATE"
-        },
-        {
-          "species": "Nidoking",
-          "dex": 34,
-          "level": 38,
-          "nickname": "NIDOKING"
-        }
-      ],
+      "e4HofTeam": null,
       "location": {
-        "area": "Seafoam Islands",
-        "x": 43.0,
-        "y": 82.0,
+        "area": "S.S. Anne",
+        "x": 62.0,
+        "y": 63.0,
         "known": true,
         "mapGroup": 1,
-        "mapNum": 83
+        "mapNum": 4
       },
-      "party": [
-        {
-          "species": "Snorlax",
-          "dex": 143,
-          "nickname": "Lazy",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 282153,
-          "dead": false,
-          "level": 60,
-          "hp": 268,
-          "maxHp": 268
-        },
-        {
-          "species": "Blastoise",
-          "dex": 9,
-          "nickname": "BLASTOISE",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 162588,
-          "dead": false,
-          "level": 55,
-          "hp": 0,
-          "maxHp": 164
-        },
-        {
-          "species": "Tangela",
-          "dex": 114,
-          "nickname": "TANGENY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": 108,
-          "exp": 13824,
-          "dead": false,
-          "level": 24,
-          "hp": 0,
-          "maxHp": 70
-        },
-        {
-          "species": "Pidgeot",
-          "dex": 18,
-          "nickname": "PIDGEOT",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 101843,
-          "dead": false,
-          "level": 47,
-          "hp": 149,
-          "maxHp": 149
-        },
-        {
-          "species": "Raticate",
-          "dex": 20,
-          "nickname": "RATICATE",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 23037,
-          "dead": false,
-          "level": 28,
-          "hp": 0,
-          "maxHp": 74
-        },
-        {
-          "species": "Nidoking",
-          "dex": 34,
-          "nickname": "NIDOKING",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": 183,
-          "exp": 49195,
-          "dead": false,
-          "level": 38,
-          "hp": 0,
-          "maxHp": 109
-        }
-      ],
-      "boxes": [
-        {
-          "species": "Pidgey",
-          "dex": 16,
-          "nickname": "PIDGEY",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 57,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Zubat",
-          "dex": 41,
-          "nickname": "ZUBAT",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 343,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Rattata",
-          "dex": 19,
-          "nickname": "RATTATA",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 84,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Metapod",
-          "dex": 11,
-          "nickname": "METAPOD",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 779,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Spearow",
-          "dex": 21,
-          "nickname": "SPEAROW",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 1000,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Meowth",
-          "dex": 52,
-          "nickname": "MEOWTH",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 1728,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Oddish",
-          "dex": 43,
-          "nickname": "ODDISH",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 6946,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Machop",
-          "dex": 66,
-          "nickname": "MACHOP",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 3120,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Ekans",
-          "dex": 23,
-          "nickname": "EKANS",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2299,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Jigglypuff",
-          "dex": 39,
-          "nickname": "JIGGLYPUFF",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 3519,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Doduo",
-          "dex": 84,
-          "nickname": "DODUO",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 17576,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Snorlax",
-          "dex": 143,
-          "nickname": "SNORLAX",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 33750,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Voltorb",
-          "dex": 100,
-          "nickname": "VOLTORB",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 2744,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Eevee",
-          "dex": 133,
-          "nickname": "EEVEE",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 15625,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Parasect",
-          "dex": 47,
-          "nickname": "PARASECT",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 15625,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Rhyhorn",
-          "dex": 111,
-          "nickname": "RHYHORN",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 21970,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Venomoth",
-          "dex": 49,
-          "nickname": "VENOMOTH",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 32768,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Exeggcute",
-          "dex": 102,
-          "nickname": "EXEGGCUTE",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 19531,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Psyduck",
-          "dex": 54,
-          "nickname": "PSYDUCK",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 12167,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Tentacool",
-          "dex": 72,
-          "nickname": "TENTACOOL",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 428,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Golbat",
-          "dex": 42,
-          "nickname": "GOLBAT",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 17576,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Seel",
-          "dex": 86,
-          "nickname": "SEEL",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 27000,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Horsea",
-          "dex": 116,
-          "nickname": "HORSEA",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 8000,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Grimer",
-          "dex": 88,
-          "nickname": "GRIMER",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 21952,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Weezing",
-          "dex": 110,
-          "nickname": "WEEZING",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 32768,
-          "dead": true,
-          "box": 1
-        },
-        {
-          "species": "Hitmonchan",
-          "dex": 107,
-          "nickname": "HITMONCHAN",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 15625,
-          "dead": false,
-          "box": 1
-        },
-        {
-          "species": "Lapras",
-          "dex": 131,
-          "nickname": "LAPRAS",
-          "shiny": false,
-          "isEgg": false,
-          "heldItem": null,
-          "exp": 19531,
-          "dead": false,
-          "box": 1
-        }
-      ],
-      "boxCount": 27
+      "party": [],
+      "boxes": [],
+      "boxCount": 0
     },
     {
       "id": "wes-fire-red",
