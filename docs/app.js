@@ -386,7 +386,7 @@ function setActiveGame(DATA, idx) {
   game.players.forEach((p, i) => p._color = TRAINER_COLORS[i % TRAINER_COLORS.length]);
 
   const img = $("#mapImg");
-  img.src = `${game.mapImage}?v=5`;
+  img.src = `${game.mapImage}?v=6`;
   img.alt = game.mapLabel || game.name;
 
   renderGamePills(DATA.games, idx, (i) => setActiveGame(DATA, i));

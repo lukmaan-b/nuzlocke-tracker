@@ -27,7 +27,7 @@ mapGroup.mapNum into a place name automatically. Instead:
 # tracked — no Kanto map asset and badge handling assumes 8 Johto badges. See
 # README "Known limitations".
 AREA_COORDS = {
-    "Violet City":      (44.8, 35.0),   # CONFIRMED (WES, outside Sprout Tower)
+    "Violet City":      (45.0, 35.6),   # CONFIRMED (on the in-game city marker; Route 31 is just east)
     # --- approximate (unlabeled in-game markers, matched by geography) ---
     "New Bark Town":    (68.5, 68.8),
     "Cherrygrove City": (51.7, 68.3),
