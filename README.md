@@ -66,6 +66,25 @@ without a decomp map-name table (like the Johto romhack), locations are mapped b
 raw `mapGroup.mapNum` in `johtodata.py` — the parser logs any unmapped
 `group.num` so you can add it as players explore.
 
+### Migration (single-game → multi-game)
+
+This used to be a single Kanto/FireRed tracker; it's now multi-game. If you have
+an old checkout:
+
+- **Save files moved into per-game folders.** Old: `saves/*.sav`. New:
+  `saves/<game>/*.{sav,srm}` (e.g. `saves/firered/wes.sav`,
+  `saves/johto/wes.srm`). `games.json` points each game at its folder via
+  `savesDir`.
+- **`parse_saves.py` args changed.** It now takes `[games.json] [out.json]`
+  (was `[saves_dir] [out.json]`) and writes `{ "games": [...] }` instead of a
+  top-level `{ "players": [...] }`.
+- **`e4_records.json` keys are namespaced** `"<game>/<player>"` (was just
+  `"<player>"`), so one person can clear multiple games. Existing keys were
+  migrated to the `firered/` prefix.
+- **`docs/data.json` is regenerated** — just re-run `python parse_saves.py`.
+- The frontend reads the new grouped shape but still falls back to an old
+  top-level `players` array if it sees one.
+
 ## Player avatars
 
 The marker (and detail-panel header) shows, in priority order:
@@ -97,6 +116,16 @@ unrecognised prints a `[!] unmapped location` line and renders at map center.
 - Held-item and move names aren't resolved yet (species, nickname, level, HP,
   shiny, and egg status are).
 - Pokémon sprites load from the PokeAPI sprite CDN by National Dex number.
+- **Johto romhack: Kanto post-game is not tracked.** The romhack is HG/SS-based
+  and continues into Kanto after the 8 Johto badges (badges 9–16, Indigo
+  Plateau, Mt. Silver). Only Johto is supported so far: the map asset
+  (`docs/assets/johto-map.png`, ripped from the in-game Town Map) covers Johto
+  only, and the game's `badges` list in `games.json` is the 8 Johto badges, so
+  Kanto badges/locations won't show. Adding it later means a Kanto map + Kanto
+  `mapGroup.mapNum` coordinates in `johtodata.py` and 16-badge handling.
+- **Johto town coordinates are approximate.** The in-game map markers are
+  unlabeled, so `johtodata.AREA_COORDS` was matched to Johto geography by hand —
+  only Violet City is confirmed. Correct the rest as players visit each town.
 
 ## Files
 
