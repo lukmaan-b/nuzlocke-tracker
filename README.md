@@ -1,20 +1,27 @@
-# Kanto Nuzlocke Tracker
+# Nuzlocke Tracker
 
-A small website that reads Pokémon FireRed/LeafGreen `.sav` files and shows each
-player's progress on the in-game Kanto Town Map. Click a player's face to see
-their name, badges, current party, PC boxes, and play time.
+A small website that reads Pokémon Gen 3 `.sav`/`.srm` files and shows each
+player's progress on the in-game region map. Click a player's face to see their
+name, badges, current party, PC boxes, and play time. Multiple games/regions are
+supported and switched between with pills (e.g. a Johto romhack on the front
+page, the original Kanto FireRed run as a second tab).
 
 ## How it works
 
 ```
-.sav files  ──►  parse_saves.py  ──►  site/data.json  ──►  static website
+saves/<game>/*.srm  ──►  parse_saves.py  ──►  docs/data.json  ──►  static website
+                              ▲
+                          games.json (per-game: region, map, badges, save format)
 ```
 
-1. **`parse_saves.py`** reads every `.sav` in `saves/`, decodes the Gen 3 save
-   format (trainer info, party, PC boxes, badges, location) and writes
-   `site/data.json`.
-2. **`site/`** is a plain HTML/CSS/JS site that loads `data.json`, places a
-   marker on the Town Map for each player, and shows a detail panel on click.
+1. **`games.json`** lists each game: its save folder, save `format`
+   (`frlg` or `emerald`), `region`, map image, and badge names.
+2. **`parse_saves.py`** reads every save in each game's folder, decodes the Gen 3
+   save format (trainer info, party, PC boxes, badges, location) and writes
+   `docs/data.json` grouped by game.
+3. **`docs/`** is a plain HTML/CSS/JS site that loads `data.json`, renders a pill
+   per game, places a marker on that game's map for each player, and shows a
+   detail panel on click.
 
 ## Usage
 
@@ -43,10 +50,21 @@ their name, badges, current party, PC boxes, and play time.
 ### Manual (no Dropbox)
 
 ```powershell
-# Drop .sav files into saves/, then:
+# Drop each save into its game's folder, e.g.
+#   saves/johto/<player>.srm   (Emerald-based HG/SS romhack)
+#   saves/firered/<player>.sav (FireRed/LeafGreen)
+# then:
 python parse_saves.py
-python -m http.server 8000 --directory site
+python -m http.server 8000 --directory docs
 ```
+
+### Adding a new game
+
+Add an entry to `games.json` (id, name, `savesDir`, `format`, `region`,
+`mapImage`, `badges`) and drop a region map into `docs/assets/`. For a region
+without a decomp map-name table (like the Johto romhack), locations are mapped by
+raw `mapGroup.mapNum` in `johtodata.py` — the parser logs any unmapped
+`group.num` so you can add it as players explore.
 
 ## Player avatars
 

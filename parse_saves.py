@@ -13,6 +13,21 @@ import gen3data
 SIG = 0x08012025
 SLOT = 0xE000  # 14 sections * 0x1000
 
+# Per-game-format offsets into the reconstructed SaveBlock1.
+# FireRed/LeafGreen and Ruby/Sapphire/Emerald lay out the party and the game
+# flags array at different offsets; everything else (trainer info, Pokemon
+# encryption, PC box layout, Hall of Fame) is shared across Gen 3.
+FORMATS = {
+    "frlg": {
+        "party_count": 0x0034, "party": 0x0038,
+        "flags_base": 0x0EE0, "badge0": 0x820,
+    },
+    "emerald": {
+        "party_count": 0x0234, "party": 0x0238,
+        "flags_base": 0x1270, "badge0": 0x867,
+    },
+}
+
 # Gen 3 text encoding (subset sufficient for names)
 _CHARS = {0x00: " "}
 for i, c in enumerate("0123456789"): _CHARS[0xA1 + i] = c
@@ -159,7 +174,8 @@ def read_hof_team(data):
     return team if team else None
 
 
-def parse_save(path):
+def parse_save(path, fmt="frlg", region="kanto"):
+    off = FORMATS[fmt]
     with open(path, "rb") as f:
         data = f.read()
     secs = live_sections(data)
@@ -177,11 +193,11 @@ def parse_save(path):
     SB1 = reconstruct(data, secs, (1, 2, 3, 4))
     px, py = struct.unpack_from("<H", SB1, 0)[0], struct.unpack_from("<H", SB1, 2)[0]
     map_group, map_num = SB1[4], SB1[5]
-    location = gen3data.lookup_location(map_group, map_num)
+    location = gen3data.lookup_location(map_group, map_num, region)
     location.update({"mapGroup": map_group, "mapNum": map_num})
 
-    # badges: flags array @0x0EE0, FLAG_BADGE01_GET = 0x820
-    flags_base, badge0 = 0x0EE0, 0x820
+    # badges: per-format flags array + FLAG_BADGE01_GET id
+    flags_base, badge0 = off["flags_base"], off["badge0"]
     badge_list = []
     for i in range(8):
         f = badge0 + i
@@ -195,10 +211,11 @@ def parse_save(path):
 
     # party
     party = []
-    count = struct.unpack_from("<I", SB1, 0x34)[0]
+    count = struct.unpack_from("<I", SB1, off["party_count"])[0]
+    pbase = off["party"]
     if 0 < count <= 6:
         for i in range(count):
-            mon = decode_mon(SB1[0x38 + i * 100:0x38 + (i + 1) * 100], True, tid_full)
+            mon = decode_mon(SB1[pbase + i * 100:pbase + (i + 1) * 100], True, tid_full)
             if mon:
                 party.append(mon)
 
@@ -233,59 +250,83 @@ def parse_save(path):
     }
 
 
-def main():
-    saves_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "saves")
-    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "docs", "data.json")
-
-    # Load persisted E4 clear times (captured once, the first time each player clears)
-    records_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "e4_records.json")
-    e4_records = {}
-    if os.path.exists(records_path):
-        with open(records_path, encoding="utf-8") as f:
-            e4_records = json.load(f)
-
+def parse_game(game, root, e4_records):
+    """Parse every save in one game's folder. Returns the game's output dict and
+    a flag for whether any first-time E4 clear was recorded."""
+    fmt = game.get("format", "frlg")
+    region = game.get("region", "kanto")
+    saves_dir = os.path.join(root, game["savesDir"])
     files = sorted(
         glob.glob(os.path.join(saves_dir, "*.sav")) +
         glob.glob(os.path.join(saves_dir, "*.srm"))
     )
-    players = []
+
+    print(f"[{game['id']}] {game['name']}  ({fmt}/{region})  <- {saves_dir}")
+    players, records_updated = [], False
     for path in files:
         try:
-            p = parse_save(path)
+            p = parse_save(path, fmt, region)
+            p["game"] = game["id"]
             players.append(p)
             loc = p["location"]
-            note = "" if loc["known"] else "  [!] unmapped location, add to gen3data.LOCATIONS"
+            note = "" if loc["known"] else f"  [!] unmapped {region} location g{loc['mapGroup']}.{loc['mapNum']}"
             e4_note = "  [E4 CLEARED]" if p["e4Beaten"] else ""
-            print(f"  {p['id']:12s} '{p['trainer']}'  badges={p['badges']}  "
+            print(f"  {p['id']:16s} '{p['trainer']}'  badges={p['badges']}  "
                   f"party={len(p['party'])}  box={p['boxCount']}  "
-                  f"@ {loc['area']} (g{loc['mapGroup']}.{loc['mapNum']}){note}{e4_note}")
+                  f"@ {loc['area']}{note}{e4_note}")
         except Exception as e:
             print(f"  [ERROR] {path}: {e}")
 
-    # Snapshot E4 clear time the first time each player triggers the flag
-    records_updated = False
+    # Snapshot E4 clear time the first time each player triggers the flag.
+    # Keyed by "<game>/<id>" so the same person can clear multiple games.
     for p in players:
-        pid = p["id"]
-        if p["e4Beaten"] and pid not in e4_records:
+        rkey = f"{game['id']}/{p['id']}"
+        if p["e4Beaten"] and rkey not in e4_records:
             pt = p["playTime"]
-            e4_records[pid] = {
+            e4_records[rkey] = {
                 "h": pt["h"], "m": pt["m"], "s": pt["s"],
                 "hofTeam": p["e4HofTeam"],
             }
             records_updated = True
             print(f"  *** First E4 clear for '{p['trainer']}' recorded at "
                   f"{pt['h']}h {pt['m']:02d}m {pt['s']:02d}s ***")
-        # Attach the persisted clear time (None if not yet cleared)
-        p["e4ClearTime"] = e4_records.get(pid)
+        p["e4ClearTime"] = e4_records.get(rkey)
+
+    out = {k: game[k] for k in ("id", "name", "mapLabel", "mapImage", "badges") if k in game}
+    out["players"] = players
+    return out, records_updated
+
+
+def main():
+    root = os.path.dirname(os.path.abspath(__file__))
+    config_path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(root, "games.json")
+    out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(root, "docs", "data.json")
+
+    with open(config_path, encoding="utf-8") as f:
+        config = json.load(f)
+
+    # Load persisted E4 clear times (captured once, the first time each player clears)
+    records_path = os.path.join(root, "e4_records.json")
+    e4_records = {}
+    if os.path.exists(records_path):
+        with open(records_path, encoding="utf-8") as f:
+            e4_records = json.load(f)
+
+    games, records_updated, total = [], False, 0
+    for game in config["games"]:
+        gout, updated = parse_game(game, root, e4_records)
+        games.append(gout)
+        records_updated = records_updated or updated
+        total += len(gout["players"])
 
     if records_updated:
         with open(records_path, "w", encoding="utf-8") as f:
             json.dump(e4_records, f, indent=2, ensure_ascii=False)
 
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    with open(out, "w", encoding="utf-8") as f:
-        json.dump({"players": players}, f, indent=2, ensure_ascii=False)
-    print(f"\nWrote {len(players)} player(s) -> {out}")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump({"games": games}, f, indent=2, ensure_ascii=False)
+    print(f"\nWrote {total} player(s) across {len(games)} game(s) -> {out_path}")
 
 
 if __name__ == "__main__":

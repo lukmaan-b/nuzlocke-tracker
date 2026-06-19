@@ -4,3 +4,4 @@ __pycache__/
 saves/
 debug_boxes.py
 sync.log
+.DS_Store

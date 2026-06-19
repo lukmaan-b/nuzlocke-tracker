@@ -1,0 +1,30 @@
+{
+  "games": [
+    {
+      "id": "johto",
+      "name": "Johto",
+      "mapLabel": "Johto Region Map",
+      "mapImage": "assets/johto-map.png",
+      "format": "emerald",
+      "region": "johto",
+      "savesDir": "saves/johto",
+      "badges": [
+        "Zephyr", "Hive", "Plain", "Fog",
+        "Storm", "Mineral", "Glacier", "Rising"
+      ]
+    },
+    {
+      "id": "firered",
+      "name": "Kanto",
+      "mapLabel": "Kanto Region Map",
+      "mapImage": "assets/townmap.png",
+      "format": "frlg",
+      "region": "kanto",
+      "savesDir": "saves/firered",
+      "badges": [
+        "Boulder", "Cascade", "Thunder", "Rainbow",
+        "Soul", "Marsh", "Volcano", "Earth"
+      ]
+    }
+  ]
+}

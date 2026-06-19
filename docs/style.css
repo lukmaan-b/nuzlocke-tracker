@@ -175,20 +175,40 @@ body {
   width: 100%;
 }
 
-.map-label-pill {
+/* ── Game pills (region / game switcher) ─────────────────────── */
+.game-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: 6px;
+}
+
+.game-pill {
   background: var(--shimmer), var(--glass-thin);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
   border: 1px solid var(--glass-border);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
   border-radius: var(--r-full);
-  padding: 5px 16px;
+  padding: 6px 16px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-left: 6px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.12s var(--ease-spring), color 0.15s;
+}
+
+.game-pill:hover  { filter: brightness(1.2); transform: scale(1.03); }
+.game-pill:active { transform: scale(0.97); }
+
+.game-pill.active {
+  color: var(--text-primary);
+  background: var(--shimmer), rgba(10, 132, 255, 0.22);
+  border-color: rgba(10, 132, 255, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 14px rgba(10, 132, 255, 0.30);
 }
 
 .map-wrap {

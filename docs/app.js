@@ -1,9 +1,7 @@
-// Kanto Nuzlocke Tracker — Pokémon FireRed/LeafGreen design system
+// Nuzlocke Tracker — multi-game (Pokémon FireRed/LeafGreen design system)
 
-const BADGE_NAMES = [
-  "Boulder","Cascade","Thunder","Rainbow",
-  "Soul","Marsh","Volcano","Earth",
-];
+// Badge names for the currently-selected game (set by setActiveGame).
+let BADGE_NAMES = [];
 
 const TRAINER_COLORS = [
   "#0A84FF","#FF453A","#30D158","#BF5AF2",
@@ -165,7 +163,7 @@ function openPanel(player) {
   const infoTitle = el("div", "sum-section-title"); infoTitle.textContent = "TRAINER";
   const infoBody = el("div", "sum-section-body");
   const rows = [
-    ["BADGES", `${player.badges} / 8`],
+    ["BADGES", `${player.badges} / ${BADGE_NAMES.length}`],
     ["LOCATION", player.location.area],
     ["PLAY TIME", `${pt.h}H ${String(pt.m).padStart(2,"0")}M`],
   ];
@@ -367,9 +365,39 @@ function renderLegend(players) {
   });
 }
 
+// ── Game pills (switch between games / regions) ───────────────────────────────
+function renderGamePills(games, activeIdx, onSelect) {
+  const nav = $("#gamePills");
+  nav.innerHTML = "";
+  games.forEach((g, i) => {
+    const pill = el("button", `game-pill${i === activeIdx ? " active" : ""}`);
+    pill.textContent = g.mapLabel || g.name;
+    pill.onclick = () => onSelect(i);
+    nav.append(pill);
+  });
+}
+
+// ── Active-game switching ─────────────────────────────────────────────────────
+function setActiveGame(DATA, idx) {
+  const game = DATA.games[idx];
+  BADGE_NAMES = game.badges || [];
+
+  // assign identity colors within this game's roster
+  game.players.forEach((p, i) => p._color = TRAINER_COLORS[i % TRAINER_COLORS.length]);
+
+  const img = $("#mapImg");
+  img.src = `${game.mapImage}?v=4`;
+  img.alt = game.mapLabel || game.name;
+
+  renderGamePills(DATA.games, idx, (i) => setActiveGame(DATA, i));
+  renderLegend(game.players);
+  renderMarkers(game.players);
+  closePanel();
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────────
 async function init() {
-  let DATA = { players: [] };
+  let DATA;
   try {
     const res = await fetch("data.json", { cache: "no-store" });
     DATA = await res.json();
@@ -380,9 +408,11 @@ async function init() {
       </div>`;
     return;
   }
-  DATA.players.forEach((p, i) => p._color = TRAINER_COLORS[i % TRAINER_COLORS.length]);
-  renderLegend(DATA.players);
-  renderMarkers(DATA.players);
+  // back-compat: old single-game data.json had a top-level players array
+  if (!DATA.games) DATA = { games: [{ name: "Game", badges: [], players: DATA.players || [] }] };
+  if (!DATA.games.length) return;
+
+  setActiveGame(DATA, 0);  // first game = front page
 }
 
 init();
