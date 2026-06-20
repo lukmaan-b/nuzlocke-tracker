@@ -321,6 +321,42 @@
       "boxCount": 0
     },
     {
+      "id": "wes Pokemon - Emerald Version (USA, Europe) (patched)",
+      "trainer": "WES",
+      "gender": "M",
+      "trainerId": 31833,
+      "playTime": {
+        "h": 0,
+        "m": 51,
+        "s": 4
+      },
+      "badges": 0,
+      "badgeList": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "e4Beaten": false,
+      "e4ClearTime": null,
+      "e4HofTeam": null,
+      "location": {
+        "area": "Pallet Town",
+        "x": 22.0,
+        "y": 87.0,
+        "known": true,
+        "mapGroup": 3,
+        "mapNum": 0
+      },
+      "party": [],
+      "boxes": [],
+      "boxCount": 0
+    },
+    {
       "id": "wes-fire-red",
       "trainer": "WES",
       "gender": "M",
