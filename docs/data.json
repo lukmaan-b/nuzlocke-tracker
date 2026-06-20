@@ -326,9 +326,9 @@
       "gender": "M",
       "trainerId": 31833,
       "playTime": {
-        "h": 0,
-        "m": 51,
-        "s": 4
+        "h": 1,
+        "m": 43,
+        "s": 3
       },
       "badges": 0,
       "badgeList": [
@@ -345,16 +345,50 @@
       "e4ClearTime": null,
       "e4HofTeam": null,
       "location": {
-        "area": "Pallet Town",
-        "x": 22.0,
-        "y": 87.0,
-        "known": true,
-        "mapGroup": 3,
-        "mapNum": 0
+        "area": "Unknown",
+        "x": 50.0,
+        "y": 50.0,
+        "known": false,
+        "mapGroup": 24,
+        "mapNum": 8
       },
       "party": [],
-      "boxes": [],
-      "boxCount": 0
+      "boxes": [
+        {
+          "species": "Seel",
+          "dex": 86,
+          "nickname": "DIRP",
+          "shiny": false,
+          "isEgg": true,
+          "heldItem": null,
+          "exp": 125,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Azurill",
+          "dex": 325,
+          "nickname": "LUVSIC",
+          "shiny": false,
+          "isEgg": true,
+          "heldItem": null,
+          "exp": 786,
+          "dead": false,
+          "box": 1
+        },
+        {
+          "species": "Unknown (433)",
+          "dex": null,
+          "nickname": "YUMMY",
+          "shiny": false,
+          "isEgg": true,
+          "heldItem": null,
+          "exp": 640,
+          "dead": false,
+          "box": 1
+        }
+      ],
+      "boxCount": 3
     },
     {
       "id": "wes-fire-red",
