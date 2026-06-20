@@ -1,15 +1,88 @@
 {
-  "lukmaan": {
+  "firered/lukmaan": {
     "h": 15,
     "m": 24,
     "s": 5,
     "hofTeam": [
-      {"species": "Snorlax",   "dex": 143, "level": 60, "nickname": "Lazy"},
-      {"species": "Blastoise", "dex":   9, "level": 55, "nickname": "BLASTOISE"},
-      {"species": "Tangela",   "dex": 114, "level": 24, "nickname": "TANGENY"},
-      {"species": "Pidgeot",   "dex":  18, "level": 47, "nickname": "PIDGEOT"},
-      {"species": "Raticate",  "dex":  20, "level": 28, "nickname": "RATICATE"},
-      {"species": "Nidoking",  "dex":  34, "level": 38, "nickname": "NIDOKING"}
+      {
+        "species": "Snorlax",
+        "dex": 143,
+        "level": 60,
+        "nickname": "Lazy"
+      },
+      {
+        "species": "Blastoise",
+        "dex": 9,
+        "level": 55,
+        "nickname": "BLASTOISE"
+      },
+      {
+        "species": "Tangela",
+        "dex": 114,
+        "level": 24,
+        "nickname": "TANGENY"
+      },
+      {
+        "species": "Pidgeot",
+        "dex": 18,
+        "level": 47,
+        "nickname": "PIDGEOT"
+      },
+      {
+        "species": "Raticate",
+        "dex": 20,
+        "level": 28,
+        "nickname": "RATICATE"
+      },
+      {
+        "species": "Nidoking",
+        "dex": 34,
+        "level": 38,
+        "nickname": "NIDOKING"
+      }
+    ]
+  },
+  "firered/wes": {
+    "h": 15,
+    "m": 25,
+    "s": 54,
+    "hofTeam": [
+      {
+        "species": "Lapras",
+        "dex": 131,
+        "level": 65,
+        "nickname": "Faketurtle"
+      },
+      {
+        "species": "Nidoking",
+        "dex": 34,
+        "level": 55,
+        "nickname": "NIDOKING"
+      },
+      {
+        "species": "Charizard",
+        "dex": 6,
+        "level": 55,
+        "nickname": "CHARGRILL"
+      },
+      {
+        "species": "Jolteon",
+        "dex": 135,
+        "level": 56,
+        "nickname": "Peepee"
+      },
+      {
+        "species": "Rattata",
+        "dex": 19,
+        "level": 2,
+        "nickname": "RATTATA"
+      },
+      {
+        "species": "Geodude",
+        "dex": 74,
+        "level": 16,
+        "nickname": "Leggy"
+      }
     ]
   }
 }

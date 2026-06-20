@@ -1,20 +1,27 @@
-# Kanto Nuzlocke Tracker
+# Nuzlocke Tracker
 
-A small website that reads Pokémon FireRed/LeafGreen `.sav` files and shows each
-player's progress on the in-game Kanto Town Map. Click a player's face to see
-their name, badges, current party, PC boxes, and play time.
+A small website that reads Pokémon Gen 3 `.sav`/`.srm` files and shows each
+player's progress on the in-game region map. Click a player's face to see their
+name, badges, current party, PC boxes, and play time. Multiple games/regions are
+supported and switched between with pills (e.g. a Johto romhack on the front
+page, the original Kanto FireRed run as a second tab).
 
 ## How it works
 
 ```
-.sav files  ──►  parse_saves.py  ──►  site/data.json  ──►  static website
+saves/<game>/*.srm  ──►  parse_saves.py  ──►  docs/data.json  ──►  static website
+                              ▲
+                          games.json (per-game: region, map, badges, save format)
 ```
 
-1. **`parse_saves.py`** reads every `.sav` in `saves/`, decodes the Gen 3 save
-   format (trainer info, party, PC boxes, badges, location) and writes
-   `site/data.json`.
-2. **`site/`** is a plain HTML/CSS/JS site that loads `data.json`, places a
-   marker on the Town Map for each player, and shows a detail panel on click.
+1. **`games.json`** lists each game: its save folder, save `format`
+   (`frlg` or `emerald`), `region`, map image, and badge names.
+2. **`parse_saves.py`** reads every save in each game's folder, decodes the Gen 3
+   save format (trainer info, party, PC boxes, badges, location) and writes
+   `docs/data.json` grouped by game.
+3. **`docs/`** is a plain HTML/CSS/JS site that loads `data.json`, renders a pill
+   per game, places a marker on that game's map for each player, and shows a
+   detail panel on click.
 
 ## Usage
 
@@ -43,10 +50,40 @@ their name, badges, current party, PC boxes, and play time.
 ### Manual (no Dropbox)
 
 ```powershell
-# Drop .sav files into saves/, then:
+# Drop each save into its game's folder, e.g.
+#   saves/johto/<player>.srm   (Emerald-based HG/SS romhack)
+#   saves/firered/<player>.sav (FireRed/LeafGreen)
+# then:
 python parse_saves.py
-python -m http.server 8000 --directory site
+python -m http.server 8000 --directory docs
 ```
+
+### Adding a new game
+
+Add an entry to `games.json` (id, name, `savesDir`, `format`, `region`,
+`mapImage`, `badges`) and drop a region map into `docs/assets/`. For a region
+without a decomp map-name table (like the Johto romhack), locations are mapped by
+raw `mapGroup.mapNum` in `johtodata.py` — the parser logs any unmapped
+`group.num` so you can add it as players explore.
+
+### Migration (single-game → multi-game)
+
+This used to be a single Kanto/FireRed tracker; it's now multi-game. If you have
+an old checkout:
+
+- **Save files moved into per-game folders.** Old: `saves/*.sav`. New:
+  `saves/<game>/*.{sav,srm}` (e.g. `saves/firered/wes.sav`,
+  `saves/johto/wes.srm`). `games.json` points each game at its folder via
+  `savesDir`.
+- **`parse_saves.py` args changed.** It now takes `[games.json] [out.json]`
+  (was `[saves_dir] [out.json]`) and writes `{ "games": [...] }` instead of a
+  top-level `{ "players": [...] }`.
+- **`e4_records.json` keys are namespaced** `"<game>/<player>"` (was just
+  `"<player>"`), so one person can clear multiple games. Existing keys were
+  migrated to the `firered/` prefix.
+- **`docs/data.json` is regenerated** — just re-run `python parse_saves.py`.
+- The frontend reads the new grouped shape but still falls back to an old
+  top-level `players` array if it sees one.
 
 ## Player avatars
 
@@ -79,6 +116,16 @@ unrecognised prints a `[!] unmapped location` line and renders at map center.
 - Held-item and move names aren't resolved yet (species, nickname, level, HP,
   shiny, and egg status are).
 - Pokémon sprites load from the PokeAPI sprite CDN by National Dex number.
+- **Johto romhack: Kanto post-game is not tracked.** The romhack is HG/SS-based
+  and continues into Kanto after the 8 Johto badges (badges 9–16, Indigo
+  Plateau, Mt. Silver). Only Johto is supported so far: the map asset
+  (`docs/assets/johto-map.png`, ripped from the in-game Town Map) covers Johto
+  only, and the game's `badges` list in `games.json` is the 8 Johto badges, so
+  Kanto badges/locations won't show. Adding it later means a Kanto map + Kanto
+  `mapGroup.mapNum` coordinates in `johtodata.py` and 16-badge handling.
+- **Johto town coordinates are approximate.** The in-game map markers are
+  unlabeled, so `johtodata.AREA_COORDS` was matched to Johto geography by hand —
+  only Violet City is confirmed. Correct the rest as players visit each town.
 
 ## Files
 
